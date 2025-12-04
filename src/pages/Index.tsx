@@ -44,7 +44,7 @@ const Index = () => {
               <p>com Rodrygo Murari - Especialista com mais de 5 MIL horas de experiência</p>
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
                 <p className="text-primary font-bold text-xl mb-2">📍 Informações do Evento:</p>
-                <p className="font-semibold text-foreground text-base">📅 Dia 13/12 (Sábado) das 09h às 12h</p>
+                <p className="font-semibold text-foreground text-base">📅 Dia 13/12 (Sábado) das 13h às 16h</p>
                 <p className="font-semibold text-foreground text-base">🏢 Av. Presidente Wilson 165 - Centro (ao lado do Consulado Americano)</p>
               </div>
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
