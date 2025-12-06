@@ -63,7 +63,7 @@ export const EnrollmentForm = () => {
       const formData = new FormData();
       formData.append("name", name.trim());
       formData.append("phone", phoneToSend);
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwoNS_MrxKiVRdMBvUBI0tn94DldtXqo3z6Acn45hvhJtmKcJ2PHtp0fxPf3vmK69xL/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzG3J1ztTciE5g1usKKmmRRTUWAtYq50PLoi_UsM1EKB4zq4XBHNQwIp4wZXb4hO6R4/exec", {
         method: "POST",
         body: formData
       });
@@ -95,7 +95,7 @@ export const EnrollmentForm = () => {
           }
 
           // Redirect to checkout
-          window.location.href = "https://pay.cakto.com.br/38ehxkj_650680";
+          window.location.href = "https://pay.cakto.com.br/zqhiuui";
         }, 2000);
       } else {
         throw new Error("Erro ao enviar dados");
