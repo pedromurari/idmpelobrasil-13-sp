@@ -95,7 +95,7 @@ export const EnrollmentForm = () => {
           }
 
           // Redirect to checkout
-          window.location.href = "https://pay.cakto.com.br/zqhiuui";
+          window.location.href = "https://checkout.institutodespertamente.shop/VCCL1O8SCL8Q";
         }, 2000);
       } else {
         throw new Error("Erro ao enviar dados");
