@@ -159,9 +159,7 @@ export const EnrollmentForm = () => {
           <p className="flex items-center justify-center gap-1">
             🔒 Seus dados estão 100% seguros
           </p>
-          <p className="flex items-center justify-center gap-1">
-            💳 Pagamento seguro via Cakto
-          </p>
+          <p className="flex items-center justify-center gap-1">💳 Pagamento seguro via Mercado Pago</p>
         </div>
       </div>
     </form>;
