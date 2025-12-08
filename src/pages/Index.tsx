@@ -89,7 +89,9 @@ const Index = () => {
       <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
         <div className="section-container">
           <div className="max-w-4xl mx-auto text-center">
-            
+            <div className="flex justify-center mb-8">
+              <img alt="Instituto DespertaMente" className="h-20 md:h-28 w-auto" src="/lovable-uploads/80f81ce8-3e86-4c85-861e-48dfe700a84d.png" />
+            </div>
             <h2 className="md:text-4xl font-bold text-foreground mb-6 text-2xl">🏛️ QUEM ESTÁ POR TRÁS DESTE CURSO?</h2>
             <div className="text-lg text-muted-foreground space-y-4 leading-relaxed">
               <p>
