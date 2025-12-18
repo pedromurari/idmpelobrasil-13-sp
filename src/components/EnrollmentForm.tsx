@@ -11,7 +11,7 @@ const TURMA_CONFIG = {
   manha: {
     label: "Turma Manhã",
     horario: "09h às 12h",
-    sheetUrl: "https://script.google.com/macros/s/AKfycbz5tRE16T9LgPvE1BD46GCNucmF3cZ5T95jVEK91-UCl2R58nk0RzNIk-O-SvOtiq71/exec",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzJKTrbldk-mepS6j5yvEEWnIZ12WLF5INuEQlAVwfFc0IMlNiBOhBkl4tzgq3qnIHv/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCMON"
   },
   tarde: {
