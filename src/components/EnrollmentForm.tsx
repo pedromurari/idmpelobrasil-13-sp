@@ -90,40 +90,39 @@ export const EnrollmentForm = () => {
       const formData = new FormData();
       formData.append("name", name.trim());
       formData.append("phone", phoneToSend);
+      formData.append("turma", turmaConfig.label);
 
-      const response = await fetch(turmaConfig.sheetUrl, {
+      await fetch(turmaConfig.sheetUrl, {
         method: "POST",
-        body: formData
+        body: formData,
+        mode: "no-cors"
       });
 
-      if (response.ok) {
+      // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead', {
+          content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
+          content_category: 'Curso Presencial',
+          value: 10.00,
+          currency: 'BRL'
+        });
+      }
+      toast({
+        title: "✅ Dados salvos com sucesso!",
+        description: "Redirecionando para o pagamento..."
+      });
+
+      setTimeout(() => {
         if (typeof window !== 'undefined' && (window as any).fbq) {
-          (window as any).fbq('track', 'Lead', {
+          (window as any).fbq('track', 'InitiateCheckout', {
             content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-            content_category: 'Curso Presencial',
+            content_type: 'product',
             value: 10.00,
             currency: 'BRL'
           });
         }
-        toast({
-          title: "✅ Dados salvos com sucesso!",
-          description: "Redirecionando para o pagamento..."
-        });
-
-        setTimeout(() => {
-          if (typeof window !== 'undefined' && (window as any).fbq) {
-            (window as any).fbq('track', 'InitiateCheckout', {
-              content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-              content_type: 'product',
-              value: 10.00,
-              currency: 'BRL'
-            });
-          }
-          window.location.href = turmaConfig.checkoutUrl;
-        }, 2000);
-      } else {
-        throw new Error("Erro ao enviar dados");
-      }
+        window.location.href = turmaConfig.checkoutUrl;
+      }, 2000);
     } catch (error) {
       console.error("Error:", error);
       toast({
