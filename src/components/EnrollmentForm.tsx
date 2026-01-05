@@ -99,11 +99,16 @@ export const EnrollmentForm = () => {
       });
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
+      // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
+      const leadValue = selectedTurma === 'manha' ? 10.00 : 10.50;
+      const uniqueValue = leadValue + (Date.now() % 100) / 100; // Adiciona variação de centavos
+      
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
           content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
           content_category: 'Curso Presencial',
-          value: 10.00,
+          content_ids: [selectedTurma === 'manha' ? 'turma_manha' : 'turma_tarde'],
+          value: parseFloat(uniqueValue.toFixed(2)),
           currency: 'BRL'
         });
       }
