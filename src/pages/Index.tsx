@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { EnrollmentForm } from "@/components/EnrollmentForm";
 import { PillarCard } from "@/components/PillarCard";
 import { FAQItem } from "@/components/FAQItem";
+import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { Accordion } from "@/components/ui/accordion";
 import logoDespertaMente from "@/assets/despertamente-simbolo.png";
 import rodrygoMurari from "@/assets/rodrygo-murari.png";
@@ -84,6 +85,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* About Instituto */}
       <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
