@@ -38,7 +38,7 @@ const Index = () => {
               <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial no Rio!</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mt-4 mb-2">
-              Descubra o que os números dizem sobre você.
+              Descubra o poder dos SEUS NÚMEROS e transforme sua VIDA!! 
             </p>
             <p className="text-lg md:text-xl text-muted-foreground mb-6">
               com Rodrygo Murari - Especialista com mais de 5 MIL horas de experiência
@@ -47,14 +47,7 @@ const Index = () => {
             {/* Video de Vendas */}
             <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
               <div className="aspect-video w-[calc(100%+30px)] md:w-full -ml-[15px] md:ml-0">
-                <iframe 
-                  className="w-full h-full md:rounded-xl"
-                  src="https://www.youtube.com/embed/JGM-z0GCN4g?si=7ElFLPKep1tB6T9s&controls=0" 
-                  title="Vídeo de Vendas - Curso de Numerologia"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
+                <iframe className="w-full h-full md:rounded-xl" src="https://www.youtube.com/embed/JGM-z0GCN4g?si=7ElFLPKep1tB6T9s&controls=0" title="Vídeo de Vendas - Curso de Numerologia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
               </div>
             </div>
 
