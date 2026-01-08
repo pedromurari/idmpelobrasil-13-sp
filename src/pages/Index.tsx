@@ -35,14 +35,30 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line text-center text-2xl">🔮 DESCUBRA O PODER DOS NÚMEROS</span>
-              <span className="headline-line highlight text-center text-3xl">E TRANSFORME SUA VIDA!</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial no Rio!</span>
             </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mt-4 mb-2">
+              Descubra o que os números dizem sobre você.
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground mb-6">
+              com Rodrygo Murari - Especialista com mais de 5 MIL horas de experiência
+            </p>
+            
+            {/* Video de Vendas */}
+            <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
+              <div className="aspect-video w-[calc(100%+30px)] md:w-full -ml-[15px] md:ml-0">
+                <iframe 
+                  className="w-full h-full md:rounded-xl"
+                  src="https://www.youtube.com/embed/JGM-z0GCN4g?si=7ElFLPKep1tB6T9s&controls=0" 
+                  title="Vídeo de Vendas - Curso de Numerologia"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
-              <p className="font-semibold text-foreground text-center">
-                Curso Presencial de Numerologia Pitagórica Sistêmica
-              </p>
-              <p>com Rodrygo Murari - Especialista com mais de 5 MIL horas de experiência</p>
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
                 <p className="text-primary font-bold text-xl mb-2">📍 Informações do Evento:</p>
                 <p className="font-semibold text-foreground text-base">📅 Dia 17/01/26 (Sábado) Turma de Manha e de Tarde. </p>
@@ -51,7 +67,6 @@ const Index = () => {
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
                 <span className="flex items-center gap-1">📜 Certificado de Conclusão</span>
                 <span className="flex items-center gap-1">👥 Vagas Limitadas</span>
-                
               </div>
               <p className="text-2xl md:text-3xl font-bold text-primary mt-4">
                 Garanta seu Ingresso por APENAS R$10 Reais!    
