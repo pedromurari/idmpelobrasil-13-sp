@@ -11,7 +11,7 @@ const TURMA_CONFIG = {
   "11fev_noite": {
     label: "11/02 - Noite",
     data: "11 de Fevereiro",
-    diaSemana: "Terça-feira",
+    diaSemana: "Quarta-feira",
     horario: "18:30 às 21:30",
     endereco: "Endereço a definir",
     enderecoDefinido: false,
