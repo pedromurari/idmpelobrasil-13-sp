@@ -3,22 +3,50 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { User, Phone, Loader2, Clock } from "lucide-react";
+import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 
-type TurmaOption = "manha" | "tarde" | null;
+type TurmaOption = "11fev_noite" | "12fev_noite" | "28fev_manha" | "28fev_tarde" | null;
 
 const TURMA_CONFIG = {
-  manha: {
-    label: "Turma Manhã",
-    horario: "09h às 12h",
-    sheetUrl: "https://script.google.com/macros/s/AKfycbzJKTrbldk-mepS6j5yvEEWnIZ12WLF5INuEQlAVwfFc0IMlNiBOhBkl4tzgq3qnIHv/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCMON"
+  "11fev_noite": {
+    label: "11/02 - Noite",
+    data: "11 de Fevereiro",
+    diaSemana: "Terça-feira",
+    horario: "18:30 às 21:30",
+    endereco: "Endereço a definir",
+    enderecoDefinido: false,
+    sheetUrl: "https://script.google.com/macros/s/AKfycby_4B-B-O27qyvBVYp9qT9tiMQZzi23yx5duKibYnLoEdhwSx9I-5O92n9rMWJ-QUcD/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCN12"
   },
-  tarde: {
-    label: "Turma Tarde",
-    horario: "14h às 17h",
-    sheetUrl: "https://script.google.com/macros/s/AKfycbyNNf9tiTJuKQMdKGyPEnaNc1BGUCkp7Am31Sq39FUfy6hw2qkauQpw6oAkinVwO3Ln0g/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCMOX"
+  "12fev_noite": {
+    label: "12/02 - Noite",
+    data: "12 de Fevereiro",
+    diaSemana: "Quarta-feira",
+    horario: "18:30 às 21:30",
+    endereco: "Endereço a definir",
+    enderecoDefinido: false,
+    sheetUrl: "https://script.google.com/macros/s/AKfycbxi21WTGvGAjr6S3eAMyTT6rYz-FT1m6qDBf7FBR5KHg29pZPetqnraqxsRgEqYAMq0/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCN13"
+  },
+  "28fev_manha": {
+    label: "28/02 - Manhã",
+    data: "28 de Fevereiro",
+    diaSemana: "Sexta-feira",
+    horario: "09:00 às 12:00",
+    endereco: "Av. Presidente Wilson, 165",
+    enderecoDefinido: true,
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzjfP4vl7CXoV7oztjfulh3s__XN4GLbDvupGL8YfrFxZCsT3JqsiTTYa_4giITjsvCMg/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAW"
+  },
+  "28fev_tarde": {
+    label: "28/02 - Tarde",
+    data: "28 de Fevereiro",
+    diaSemana: "Sexta-feira",
+    horario: "14:00 às 17:00",
+    endereco: "Av. Presidente Wilson, 165",
+    enderecoDefinido: true,
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzUDeaBI0V0-IJvzn0gNR_5rROPZl1hLJQW91tQ9NHcxFAPEngazxKAoAtooIdLezte/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAX"
   }
 };
 
@@ -100,14 +128,14 @@ export const EnrollmentForm = () => {
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
-      const leadValue = selectedTurma === 'manha' ? 10.00 : 10.50;
-      const uniqueValue = leadValue + (Date.now() % 100) / 100; // Adiciona variação de centavos
+      const baseValue = selectedTurma?.includes('28fev') ? 12.00 : 10.00;
+      const uniqueValue = baseValue + (Date.now() % 100) / 100; // Adiciona variação de centavos
       
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
           content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
           content_category: 'Curso Presencial',
-          content_ids: [selectedTurma === 'manha' ? 'turma_manha' : 'turma_tarde'],
+          content_ids: [selectedTurma],
           value: parseFloat(uniqueValue.toFixed(2)),
           currency: 'BRL'
         });
@@ -191,57 +219,57 @@ export const EnrollmentForm = () => {
         {/* Seleção de Turma */}
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
-            <Clock className="h-5 w-5" />
-            Escolha sua turma - 17/01/2026
+            <Calendar className="h-5 w-5" />
+            Escolha sua turma - Fevereiro 2025
           </Label>
           <div className="space-y-3">
-            <button
-              type="button"
-              onClick={() => setSelectedTurma("manha")}
-              className={`w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center justify-between ${
-                selectedTurma === "manha"
-                  ? "border-primary bg-primary/10 shadow-lg"
-                  : "border-border bg-background/50 hover:border-primary/50"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                  selectedTurma === "manha" ? "border-primary bg-primary" : "border-muted-foreground"
-                }`}>
-                  {selectedTurma === "manha" && (
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground" />
-                  )}
-                </div>
-                <div className="text-left">
-                  <p className="font-semibold text-foreground">☀️ Turma Manhã</p>
-                  <p className="text-sm text-muted-foreground">09h às 12h</p>
-                </div>
-              </div>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setSelectedTurma("tarde")}
-              className={`w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center justify-between ${
-                selectedTurma === "tarde"
-                  ? "border-primary bg-primary/10 shadow-lg"
-                  : "border-border bg-background/50 hover:border-primary/50"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                  selectedTurma === "tarde" ? "border-primary bg-primary" : "border-muted-foreground"
-                }`}>
-                  {selectedTurma === "tarde" && (
-                    <div className="w-2 h-2 rounded-full bg-primary-foreground" />
-                  )}
-                </div>
-                <div className="text-left">
-                  <p className="font-semibold text-foreground">🌅 Turma Tarde</p>
-                  <p className="text-sm text-muted-foreground">14h às 17h</p>
-                </div>
-              </div>
-            </button>
+            {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
+              const turma = TURMA_CONFIG[turmaKey!];
+              const isSelected = selectedTurma === turmaKey;
+              const icon = turma.horario.includes("09:00") ? "☀️" : 
+                          turma.horario.includes("14:00") ? "🌅" : "🌙";
+              
+              return (
+                <button
+                  key={turmaKey}
+                  type="button"
+                  onClick={() => setSelectedTurma(turmaKey)}
+                  className={`w-full p-4 rounded-xl border-2 transition-all duration-300 ${
+                    isSelected
+                      ? "border-primary bg-primary/10 shadow-lg"
+                      : "border-border bg-background/50 hover:border-primary/50"
+                  }`}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className={`w-5 h-5 mt-1 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
+                      isSelected ? "border-primary bg-primary" : "border-muted-foreground"
+                    }`}>
+                      {isSelected && (
+                        <div className="w-2 h-2 rounded-full bg-primary-foreground" />
+                      )}
+                    </div>
+                    <div className="text-left flex-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-lg">{icon}</span>
+                        <p className="font-semibold text-foreground">{turma.data}</p>
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
+                          {turma.diaSemana}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        🕐 {turma.horario}
+                      </p>
+                      <p className={`text-xs mt-1 flex items-center gap-1 ${
+                        turma.enderecoDefinido ? "text-muted-foreground" : "text-amber-500"
+                      }`}>
+                        <MapPin className="h-3 w-3" />
+                        {turma.endereco}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
