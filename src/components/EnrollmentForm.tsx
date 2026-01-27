@@ -21,7 +21,7 @@ const TURMA_CONFIG = {
   "12fev_noite": {
     label: "12/02 - Noite",
     data: "12 de Fevereiro",
-    diaSemana: "Quarta-feira",
+    diaSemana: "Quinta-feira",
     horario: "18:30 às 21:30",
     endereco: "Endereço a definir",
     enderecoDefinido: false,
@@ -31,7 +31,7 @@ const TURMA_CONFIG = {
   "28fev_manha": {
     label: "28/02 - Manhã",
     data: "28 de Fevereiro",
-    diaSemana: "Sexta-feira",
+    diaSemana: "Sábado",
     horario: "09:00 às 12:00",
     endereco: "Av. Presidente Wilson, 165",
     enderecoDefinido: true,
@@ -41,7 +41,7 @@ const TURMA_CONFIG = {
   "28fev_tarde": {
     label: "28/02 - Tarde",
     data: "28 de Fevereiro",
-    diaSemana: "Sexta-feira",
+    diaSemana: "Sábado",
     horario: "14:00 às 17:00",
     endereco: "Av. Presidente Wilson, 165",
     enderecoDefinido: true,
