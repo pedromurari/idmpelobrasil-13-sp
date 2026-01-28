@@ -47,15 +47,14 @@ const Index = () => {
             {/* Video de Vendas */}
             <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
               <div className="aspect-video w-[calc(100%+30px)] md:w-full -ml-[15px] md:ml-0">
-                <iframe className="w-full h-full md:rounded-xl" src="https://www.youtube.com/embed/JGM-z0GCN4g?si=7ElFLPKep1tB6T9s&controls=0" title="Vídeo de Vendas - Curso de Numerologia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+                <iframe className="w-full h-full md:rounded-xl" src="https://www.youtube.com/embed/qNFu4xW7wZc?si=rMMsCOg4NgqCAtJJ&controls=0" title="Vídeo de Vendas - Curso de Numerologia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
               </div>
             </div>
 
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
-                <p className="text-primary font-bold text-xl mb-2">📍 Informações do Evento:</p>
-                <p className="font-semibold text-foreground text-base">📅 Dia 17/01/26 (Sábado) Turma de Manha e de Tarde. </p>
-                <p className="font-semibold text-foreground text-base">🏢 Av. Presidente Wilson 165 - Centro (ao lado do Consulado Americano)</p>
+                <p className="text-primary font-bold text-xl mb-2">🔥 Várias Turmas Disponíveis em Fevereiro!</p>
+                <p className="font-semibold text-foreground text-base">Escolha o melhor dia e horário para você — durante a semana ou no fim de semana!</p>
               </div>
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
                 <span className="flex items-center gap-1">📜 Certificado de Conclusão</span>
@@ -338,7 +337,7 @@ const Index = () => {
           </div>
 
           <div className="pt-6 border-t border-border text-sm text-muted-foreground">
-            <p>© 2025 Instituto DespertaMente. Todos os direitos reservados.</p>
+            <p>© 2026 Instituto DespertaMente. Todos os direitos reservados.</p>
             <p>CNPJ: 55.184.481/0001-24</p>
           </div>
         </div>
