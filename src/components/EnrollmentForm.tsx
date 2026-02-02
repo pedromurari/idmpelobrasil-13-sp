@@ -11,10 +11,10 @@ const TURMA_CONFIG = {
   "11fev_noite": {
     label: "11/02 - Noite",
     data: "11 de Fevereiro",
-    diaSemana: "Quarta-feira",
+    diaSemana: "Terça-feira",
     horario: "18:30 às 21:30",
-    endereco: "Endereço a definir",
-    enderecoDefinido: false,
+    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
+    enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycby_4B-B-O27qyvBVYp9qT9tiMQZzi23yx5duKibYnLoEdhwSx9I-5O92n9rMWJ-QUcD/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCN12"
   },
@@ -23,8 +23,8 @@ const TURMA_CONFIG = {
     data: "12 de Fevereiro",
     diaSemana: "Quinta-feira",
     horario: "18:30 às 21:30",
-    endereco: "Endereço a definir",
-    enderecoDefinido: false,
+    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
+    enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbxi21WTGvGAjr6S3eAMyTT6rYz-FT1m6qDBf7FBR5KHg29pZPetqnraqxsRgEqYAMq0/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCN13"
   },
