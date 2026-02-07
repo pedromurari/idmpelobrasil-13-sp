@@ -35,7 +35,7 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial no Rio de Janeiro!</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial no Botafogo e Centro do RJ!</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mt-4 mb-2">
               Descubra o poder dos SEUS NÚMEROS e transforme sua VIDA!! 
