@@ -144,8 +144,17 @@ export const EnrollmentForm = () => {
             currency: 'BRL'
           });
         }
-        window.location.href = turmaConfig.checkoutUrl;
-      }, 2000);
+        
+        // Construir URL com parâmetros pré-preenchidos
+        const cleanPhone = whatsapp.replace(/\D/g, "");
+        const queryParams = new URLSearchParams({
+          name: name.trim(),
+          telephone: cleanPhone
+        });
+        const finalUrl = `${turmaConfig.checkoutUrl}?${queryParams.toString()}`;
+        
+        window.location.href = finalUrl;
+      }, 1500);
     } catch (error) {
       console.error("Error:", error);
       toast({
@@ -175,6 +184,7 @@ export const EnrollmentForm = () => {
             <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               id="name"
+              name="nome"
               type="text"
               placeholder="Digite seu nome completo"
               value={name}
@@ -196,6 +206,7 @@ export const EnrollmentForm = () => {
             </div>
             <Input
               id="whatsapp"
+              name="whatsapp"
               type="tel"
               placeholder="(00) 00000-0000"
               value={whatsapp}
