@@ -8,9 +8,9 @@ import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 type TurmaOption = "11fev_noite" | "28fev_manha" | "28fev_tarde" | null;
 
 const TURMA_CONFIG = {
-  "11fev_noite": {
-    label: "11/02 - Noite",
-    data: "11 de Fevereiro",
+  "25fev_noite": {
+    label: "25/02 - Noite",
+    data: "25 de Fevereiro",
     diaSemana: "Quarta-feira",
     horario: "18:30 às 21:30",
     endereco: "Rua Teresa Guimarães, 185 - Botafogo",
