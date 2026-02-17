@@ -23,7 +23,7 @@ const TURMA_CONFIG = {
     data: "28 de Fevereiro",
     diaSemana: "Sábado",
     horario: "09:00 às 12:00",
-    endereco: "Av. Presidente Wilson, 165 - Centro, RJ",
+    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbzjfP4vl7CXoV7oztjfulh3s__XN4GLbDvupGL8YfrFxZCsT3JqsiTTYa_4giITjsvCMg/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAW"
@@ -33,7 +33,7 @@ const TURMA_CONFIG = {
     data: "28 de Fevereiro",
     diaSemana: "Sábado",
     horario: "14:00 às 17:00",
-    endereco: "Av. Presidente Wilson, 165 - Centro, RJ",
+    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbzUDeaBI0V0-IJvzn0gNR_5rROPZl1hLJQW91tQ9NHcxFAPEngazxKAoAtooIdLezte/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAX"
