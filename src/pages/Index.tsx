@@ -8,9 +8,10 @@ import logoDespertaMente from "@/assets/despertamente-simbolo.png";
 import rodrygoMurari from "@/assets/rodrygo-murari.png";
 const Index = () => {
   useEffect(() => {
+
+
     // Meta Pixel is loaded in index.html, PageView fires automatically
-  }, []);
-  return <div className="min-h-screen relative">
+  }, []);return <div className="min-h-screen relative">
       {/* Geometric Background Numbers */}
       <div className="geometric-numbers" aria-hidden="true">
         <div className="number-float">1</div>
@@ -35,7 +36,7 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial no Botafogo e Centro do RJ!</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso de Numerologia Presencial e Botafogo e Centro do RJ!</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mt-4 mb-2">
               Descubra o poder dos SEUS NÚMEROS e transforme sua VIDA!! 
@@ -255,13 +256,12 @@ const Index = () => {
             </p>
           </div>
 
-          <a href="#" onClick={e => {
-          e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }}>
+          <a href="#" onClick={(e) => {e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }}>
             <button className="w-full max-w-md mx-auto h-16 text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
               🚀 SIM! QUERO GARANTIR MINHA VAGA AGORA
             </button>
