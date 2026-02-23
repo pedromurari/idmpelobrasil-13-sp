@@ -5,22 +5,12 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 
-type TurmaOption = "11fev_noite" | "28fev_manha" | "28fev_tarde" | null;
+type TurmaOption = "07mar_manha" | "07mar_tarde" | null;
 
 const TURMA_CONFIG = {
-  "25fev_noite": {
-    label: "25/02 - Noite",
-    data: "25 de Fevereiro",
-    diaSemana: "Quarta-feira",
-    horario: "18:30 às 21:30",
-    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
-    enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycby_4B-B-O27qyvBVYp9qT9tiMQZzi23yx5duKibYnLoEdhwSx9I-5O92n9rMWJ-QUcD/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCN12"
-  },
-  "28fev_manha": {
-    label: "28/02 - Manhã",
-    data: "28 de Fevereiro",
+  "07mar_manha": {
+    label: "07/03 - Manhã",
+    data: "7 de Março",
     diaSemana: "Sábado",
     horario: "09:00 às 12:00",
     endereco: "Rua Teresa Guimarães, 185 - Botafogo",
@@ -28,9 +18,9 @@ const TURMA_CONFIG = {
     sheetUrl: "https://script.google.com/macros/s/AKfycbzjfP4vl7CXoV7oztjfulh3s__XN4GLbDvupGL8YfrFxZCsT3JqsiTTYa_4giITjsvCMg/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAW"
   },
-  "28fev_tarde": {
-    label: "28/02 - Tarde",
-    data: "28 de Fevereiro",
+  "07mar_tarde": {
+    label: "07/03 - Tarde",
+    data: "7 de Março",
     diaSemana: "Sábado",
     horario: "14:00 às 17:00",
     endereco: "Rua Teresa Guimarães, 185 - Botafogo",
@@ -118,7 +108,7 @@ export const EnrollmentForm = () => {
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
-      const baseValue = selectedTurma?.includes('28fev') ? 12.00 : 10.00;
+      const baseValue = 12.00;
       const uniqueValue = baseValue + (Date.now() % 100) / 100; // Adiciona variação de centavos
       
       if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -221,7 +211,7 @@ export const EnrollmentForm = () => {
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - Fevereiro 2025
+            Escolha sua turma - Março 2026
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
