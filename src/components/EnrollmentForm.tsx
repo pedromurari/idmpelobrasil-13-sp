@@ -9,21 +9,21 @@ type TurmaOption = "07mar_manha" | "07mar_tarde" | null;
 
 const TURMA_CONFIG = {
   "07mar_manha": {
-    label: "07/03 - Manhã",
-    data: "7 de Março",
+    label: "14/03 - Manhã",
+    data: "14 de Março",
     diaSemana: "Sábado",
     horario: "09:00 às 12:00",
-    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
+    endereco: "Av. Presidente Wilson, 165 - Centro",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbzjfP4vl7CXoV7oztjfulh3s__XN4GLbDvupGL8YfrFxZCsT3JqsiTTYa_4giITjsvCMg/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAW"
   },
   "07mar_tarde": {
-    label: "07/03 - Tarde",
-    data: "7 de Março",
+    label: "14/03 - Tarde",
+    data: "14 de Março",
     diaSemana: "Sábado",
     horario: "14:00 às 17:00",
-    endereco: "Rua Teresa Guimarães, 185 - Botafogo",
+    endereco: "Av. Presidente Wilson, 165 - Centro",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbzUDeaBI0V0-IJvzn0gNR_5rROPZl1hLJQW91tQ9NHcxFAPEngazxKAoAtooIdLezte/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAX"
@@ -211,7 +211,7 @@ export const EnrollmentForm = () => {
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - Março 2026
+            Escolha sua turma - 14 de Março
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
