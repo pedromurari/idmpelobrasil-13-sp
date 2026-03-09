@@ -3,13 +3,12 @@ import { EnrollmentForm } from "@/components/EnrollmentForm";
 import { PillarCard } from "@/components/PillarCard";
 import { FAQItem } from "@/components/FAQItem";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { StudentGallery } from "@/components/StudentGallery";
 import { Accordion } from "@/components/ui/accordion";
 import logoDespertaMente from "@/assets/despertamente-simbolo.png";
 import rodrygoMurari from "@/assets/rodrygo-murari.png";
 const Index = () => {
   useEffect(() => {
-
-
     // Meta Pixel is loaded in index.html, PageView fires automatically
   }, []);return <div className="min-h-screen relative">
       {/* Geometric Background Numbers */}
@@ -36,14 +35,11 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Imersão de Numerologia Presencial no Centro do RJ!</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas no RJ.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mt-4 mb-2">
-              Descubra o poder dos SEUS NÚMEROS e transforme sua VIDA!! 
-            </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6">
-              com Rodrygo Murari - Especialista com mais de 5 MIL horas de experiência
-            </p>
+            <h2 className="text-lg md:text-2xl text-muted-foreground mt-4 mb-2 font-semibold">
+              Com Rodrygo Murari: Saia com Seu Mapa Essencial Pronto, Certificado e Material de Apoio Exclusivo para Aplicar Imediatamente.
+            </h2>
             
             {/* Video de Vendas */}
             <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
@@ -59,6 +55,7 @@ const Index = () => {
               </div>
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
                 <span className="flex items-center gap-1">📜 Certificado de Conclusão</span>
+                <span className="flex items-center gap-1">📖 Material de Apoio Exclusivo</span>
                 <span className="flex items-center gap-1">👥 Vagas Limitadas</span>
               </div>
               <p className="text-2xl md:text-3xl font-bold text-primary mt-4">
@@ -74,6 +71,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Student Gallery - After Form */}
+      <StudentGallery />
+
       {/* What You'll Learn Section */}
       <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
         <div className="section-container section-highlight">
@@ -81,15 +81,48 @@ const Index = () => {
             🎓 O QUE VOCÊ VAI DESCOBRIR NESTE CURSO PRESENCIAL
           </h2>
           <p className="text-center text-muted-foreground mb-12 text-lg">
-            Os 3 Pilares do Curso
+            Os 3 Pilares do Curso — Conteúdo prático que você aplica no mesmo dia
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <PillarCard icon="🧠" title="FUNDAMENTOS E CÁLCULOS" subtitle="Domine a Base da Numerologia" items={["Cálculo correto do Número de Destino", "Interpretação completa dos números de 1 a 9", "Estrutura base da numerologia pitagórica", "Técnicas práticas de cálculo"]} footer="Aprenda o método exato usado por profissionais" />
+            <PillarCard
+              icon="🧠"
+              title="Domine os Fundamentos"
+              subtitle="Calcule e Interprete Seus Números com Precisão"
+              items={[
+                "Cálculo correto do Número de Destino — Entenda a rota da sua vida e tome decisões mais assertivas",
+                "Interpretação completa dos números de 1 a 9 — Descubra o significado por trás de cada número",
+                "Estrutura base da numerologia pitagórica — Aprenda o sistema milenar usado pelos maiores mestres",
+                "Técnicas práticas de cálculo — Domine o método passo a passo e aplique imediatamente"
+              ]}
+              footer="Aprenda o método exato usado por profissionais"
+            />
 
-            <PillarCard icon="❤️" title="MAPA PESSOAL E IDENTIDADE" subtitle="Descubra Quem Você Realmente É" items={["Número da Alma - sua essência interior", "Número de Expressão - como você se manifesta", "Introdução à leitura de Mapa Numerológico completo", "Compreenda seus padrões de comportamento"]} footer="Entenda sua personalidade de forma profunda" />
+            <PillarCard
+              icon="❤️"
+              title="Seu Mapa Pessoal"
+              subtitle="Desvende Sua Essência e Potencial Único"
+              items={[
+                "Número da Alma — Descubra sua essência interior e o que realmente te motiva",
+                "Número de Expressão — Entenda como você se manifesta e é percebido pelo mundo",
+                "Leitura do Mapa Numerológico completo — Saia do curso com seu mapa pronto em mãos",
+                "Padrões de comportamento — Compreenda por que você age de determinada forma"
+              ]}
+              footer="Entenda sua personalidade de forma profunda"
+            />
 
-            <PillarCard icon="👁️" title="APLICAÇÕES NA VIDA REAL" subtitle="Transforme Teoria em Resultados" items={["Numerologia Residencial - harmonize sua casa", "Energia da Assinatura e Nome Profissional", "Harmonizações simples para o dia a dia", "Como usar a numerologia em decisões importantes"]} footer="Ferramentas práticas que você usa IMEDIATAMENTE" />
+            <PillarCard
+              icon="👁️"
+              title="Numerologia na Prática"
+              subtitle="Transforme Teoria em Resultados Concretos para o Dia a Dia"
+              items={[
+                "Numerologia Residencial — Harmonize a energia da sua casa e melhore o ambiente",
+                "Energia da Assinatura e Nome Profissional — Potencialize sua marca pessoal",
+                "Harmonizações simples para o dia a dia — Aplique ajustes rápidos com resultados reais",
+                "Numerologia em decisões importantes — Use os números como guia estratégico"
+              ]}
+              footer="Ferramentas práticas que você usa IMEDIATAMENTE"
+            />
           </div>
         </div>
       </section>
@@ -177,17 +210,19 @@ const Index = () => {
             <p className="font-semibold text-primary text-xl text-center">
               A resposta é simples: nossa missão é DEMOCRATIZAR o autoconhecimento.
             </p>
+            <p className="text-center font-semibold text-foreground">
+              Este não é um curso online genérico. É uma experiência PRESENCIAL, com a profundidade e a interação que só o contato direto pode oferecer.
+            </p>
             <p className="text-center">
               Queremos que VOCÊ tenha acesso a ferramentas poderosas de transformação,
               independente da sua situação financeira.
             </p>
             <p className="text-center">
-              Este não é um curso qualquer pela internet. É uma experiência PRESENCIAL, com
-              interação real, material físico e certificado reconhecido.
-            </p>
-            <p className="text-center">
               O investimento simbólico de R$ 10 garante seu compromisso e nossa capacidade de
               organizar o melhor evento possível.
+            </p>
+            <p className="text-center text-primary font-bold">
+              ⚠️ Aproveite: a próxima turma será pelo valor integral. Esta é uma oportunidade única!
             </p>
           </div>
 
@@ -214,7 +249,7 @@ const Index = () => {
               📦 O QUE ESTÁ INCLUSO:
             </h3>
             <div className="grid md:grid-cols-2 gap-3 text-muted-foreground">
-              {["✅ Curso Presencial Completo", "✅ Certificado de Conclusão Reconhecido", "✅ Café e networking", "✅ Suporte durante o evento", "✅ Acesso ao grupo exclusivo de alunos", "✅ Bônus surpresa no dia"].map((item, index) => <p key={index} className="flex items-center gap-2">
+              {["✅ Curso Presencial Completo (4 horas)", "✅ Certificado de Conclusão Reconhecido", "✅ Material de Apoio Exclusivo", "✅ Seu Mapa Essencial Pronto", "✅ Café e networking", "✅ Suporte durante o evento", "✅ Acesso ao grupo exclusivo de alunos", "✅ Bônus surpresa no dia"].map((item, index) => <p key={index} className="flex items-center gap-2">
                   {item}
                 </p>)}
             </div>
@@ -231,7 +266,7 @@ const Index = () => {
             ⏰ ÚLTIMAS VAGAS DISPONÍVEIS!
           </h2>
           <p className="text-xl text-primary font-semibold mb-8">
-            Não Perca Esta Oportunidade Única
+            Não Perca Esta Oportunidade Única — Próxima Turma Pelo Valor Integral
           </p>
           <div className="text-lg text-muted-foreground space-y-4 mb-8 leading-relaxed">
             <p>Este é um evento presencial com vagas LIMITADAS.</p>
@@ -262,8 +297,8 @@ const Index = () => {
               behavior: 'smooth'
             });
           }}>
-            <button className="w-full max-w-md mx-auto h-16 text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
-              🚀 SIM! QUERO GARANTIR MINHA VAGA AGORA
+            <button className="w-full max-w-md mx-auto h-auto py-4 px-6 text-lg md:text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
+              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$10!
             </button>
           </a>
 

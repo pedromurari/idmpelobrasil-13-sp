@@ -160,9 +160,9 @@ export const EnrollmentForm = () => {
     <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto bg-card/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-2xl">
       <div className="text-center mb-6">
         <h3 className="md:text-3xl font-bold text-foreground mb-2 text-3xl">
-          👇 GARANTA SUA VAGA AGORA!
+          SIM! Quero Meu Mapa Essencial e Minha Vaga!
         </h3>
-        <p className="text-muted-foreground text-lg">Preencha com seus dados!</p>
+        <p className="text-muted-foreground text-lg">Garanta sua vaga agora e comece sua jornada de autodescoberta!</p>
       </div>
 
       <div className="space-y-5">
@@ -279,7 +279,7 @@ export const EnrollmentForm = () => {
               Processando...
             </>
           ) : (
-            <>⚡ GARANTIR VAGA PRESENCIAL!</>
+            <>⚡ Últimas Vagas: Garanta Sua Transformação por R$10!</>
           )}
         </button>
 
