@@ -109,8 +109,8 @@ export const EnrollmentForm = () => {
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
       const baseValue = 12.00;
-      const uniqueValue = baseValue + (Date.now() % 100) / 100; // Adiciona variação de centavos
-      
+      const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
+
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
           content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
@@ -134,7 +134,7 @@ export const EnrollmentForm = () => {
             currency: 'BRL'
           });
         }
-        
+
         // Construir URL com parâmetros pré-preenchidos
         const cleanPhone = whatsapp.replace(/\D/g, "");
         const queryParams = new URLSearchParams({
@@ -142,7 +142,7 @@ export const EnrollmentForm = () => {
           telephone: cleanPhone
         });
         const finalUrl = `${turmaConfig.checkoutUrl}?${queryParams.toString()}`;
-        
+
         window.location.href = finalUrl;
       }, 1500);
     } catch (error) {
@@ -160,7 +160,7 @@ export const EnrollmentForm = () => {
     <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto bg-card/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-2xl">
       <div className="text-center mb-6">
         <h3 className="md:text-3xl font-bold text-foreground mb-2 text-3xl">
-          SIM! Quero Meu Mapa Essencial e Minha Vaga!
+          SIM! Quero Meu Mapa Essencial!
         </h3>
         <p className="text-muted-foreground text-lg">Garanta sua vaga agora e comece sua jornada de autodescoberta!</p>
       </div>
@@ -178,10 +178,10 @@ export const EnrollmentForm = () => {
               type="text"
               placeholder="Digite seu nome completo"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
               className="pl-11 h-12 bg-background/50 border-border focus:border-primary"
-              required
-            />
+              required />
+            
           </div>
         </div>
 
@@ -202,8 +202,8 @@ export const EnrollmentForm = () => {
               value={whatsapp}
               onChange={handleWhatsAppChange}
               className="pl-20 h-12 bg-background/50 border-border focus:border-primary"
-              required
-            />
+              required />
+            
           </div>
         </div>
 
@@ -217,27 +217,27 @@ export const EnrollmentForm = () => {
             {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
               const turma = TURMA_CONFIG[turmaKey!];
               const isSelected = selectedTurma === turmaKey;
-              const icon = turma.horario.includes("09:00") ? "☀️" : 
-                          turma.horario.includes("14:00") ? "🌅" : "🌙";
-              
+              const icon = turma.horario.includes("09:00") ? "☀️" :
+              turma.horario.includes("14:00") ? "🌅" : "🌙";
+
               return (
                 <button
                   key={turmaKey}
                   type="button"
                   onClick={() => setSelectedTurma(turmaKey)}
                   className={`w-full p-4 rounded-xl border-2 transition-all duration-300 ${
-                    isSelected
-                      ? "border-primary bg-primary/10 shadow-lg"
-                      : "border-border bg-background/50 hover:border-primary/50"
-                  }`}
-                >
+                  isSelected ?
+                  "border-primary bg-primary/10 shadow-lg" :
+                  "border-border bg-background/50 hover:border-primary/50"}`
+                  }>
+                  
                   <div className="flex items-start gap-3">
                     <div className={`w-5 h-5 mt-1 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
-                      isSelected ? "border-primary bg-primary" : "border-muted-foreground"
-                    }`}>
-                      {isSelected && (
-                        <div className="w-2 h-2 rounded-full bg-primary-foreground" />
-                      )}
+                    isSelected ? "border-primary bg-primary" : "border-muted-foreground"}`
+                    }>
+                      {isSelected &&
+                      <div className="w-2 h-2 rounded-full bg-primary-foreground" />
+                      }
                     </div>
                     <div className="text-left flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
@@ -251,15 +251,15 @@ export const EnrollmentForm = () => {
                         🕐 {turma.horario}
                       </p>
                       <p className={`text-xs mt-1 flex items-center gap-1 ${
-                        turma.enderecoDefinido ? "text-muted-foreground" : "text-amber-500"
-                      }`}>
+                      turma.enderecoDefinido ? "text-muted-foreground" : "text-amber-500"}`
+                      }>
                         <MapPin className="h-3 w-3" />
                         {turma.endereco}
                       </p>
                     </div>
                   </div>
-                </button>
-              );
+                </button>);
+
             })}
           </div>
         </div>
@@ -271,16 +271,16 @@ export const EnrollmentForm = () => {
           style={{
             animation: isLoading ? 'none' : 'pulse-button 2s ease-in-out infinite',
             boxShadow: '0 8px 32px hsla(var(--primary) / 0.5), inset 0 -3px 0 rgba(0, 0, 0, 0.2), 0 0 0 3px hsla(var(--primary) / 0.2)'
-          }}
-        >
-          {isLoading ? (
-            <>
+          }}>
+          
+          {isLoading ?
+          <>
               <Loader2 className="mr-2 h-5 w-5 animate-spin inline" />
               Processando...
-            </>
-          ) : (
-            <>⚡ Últimas Vagas: Garanta Sua Transformação por R$10!</>
-          )}
+            </> :
+
+          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$10!</>
+          }
         </button>
 
         <div className="flex flex-col gap-2 text-center text-sm text-muted-foreground">
@@ -293,6 +293,6 @@ export const EnrollmentForm = () => {
           <p className="flex items-center justify-center gap-1">💳 Pagamento seguro via Mercado Pago</p>
         </div>
       </div>
-    </form>
-  );
+    </form>);
+
 };
