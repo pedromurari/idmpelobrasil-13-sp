@@ -298,7 +298,7 @@ const Index = () => {
           });
         }}>
             <button className="w-full max-w-md mx-auto h-auto py-4 px-6 text-lg md:text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
-              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$10!
+              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$20!
             </button>
           </a>
 
