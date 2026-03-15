@@ -11,8 +11,18 @@ import foto7 from "@/assets/gallery/foto7.jpeg";
 import foto8 from "@/assets/gallery/foto8.jpeg";
 import foto9 from "@/assets/gallery/foto9.jpeg";
 import foto10 from "@/assets/gallery/foto10.jpeg";
+import fotoSp1 from "@/assets/gallery-sp/foto1.jpeg";
+import fotoSp2 from "@/assets/gallery-sp/foto2.jpeg";
+import fotoSp3 from "@/assets/gallery-sp/foto3.jpeg";
+import fotoSp4 from "@/assets/gallery-sp/foto4.jpeg";
+import fotoSp5 from "@/assets/gallery-sp/foto5.jpeg";
 
 const photos = [
+  { src: fotoSp1, alt: "Turma completa com Rodrygo Murari" },
+  { src: fotoSp2, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp3, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp4, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp5, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
   { src: foto1, alt: "Alunas com certificado ao lado de Rodrygo Murari" },
   { src: foto2, alt: "Turma completa com certificados" },
   { src: foto3, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
@@ -41,9 +51,23 @@ export const StudentGallery = () => {
             <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
               📸 Nossos <span className="text-primary">Alunos em Ação</span>
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
               Veja momentos reais das nossas turmas presenciais — alunos certificados e transformados!
             </p>
+
+            {/* Video de depoimentos */}
+            <div className="max-w-sm mx-auto mb-8">
+              <div className="aspect-[9/16] w-full rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/b3Wkb1eNHzs"
+                  title="Depoimentos de alunos"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
