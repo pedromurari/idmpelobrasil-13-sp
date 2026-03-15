@@ -60,7 +60,7 @@ const Index = () => {
                 <span className="flex items-center gap-1">👥 Vagas Limitadas</span>
               </div>
               <p className="text-2xl md:text-3xl font-bold text-primary mt-4">
-                Garanta seu Ingresso por APENAS R$10 Reais!    
+                Garanta seu Ingresso por APENAS R$20 Reais!    
               </p>
             </div>
           </div>
