@@ -135,15 +135,7 @@ export const EnrollmentForm = () => {
           });
         }
 
-        // Construir URL com parâmetros pré-preenchidos
-        const cleanPhone = whatsapp.replace(/\D/g, "");
-        const queryParams = new URLSearchParams({
-          name: name.trim(),
-          telephone: cleanPhone
-        });
-        const finalUrl = `${turmaConfig.checkoutUrl}?${queryParams.toString()}`;
-
-        window.location.href = finalUrl;
+        window.location.href = turmaConfig.checkoutUrl;
       }, 1500);
     } catch (error) {
       console.error("Error:", error);
