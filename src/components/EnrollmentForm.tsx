@@ -136,7 +136,7 @@ export const EnrollmentForm = () => {
           (window as any).fbq('track', 'InitiateCheckout', {
             content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
             content_type: 'product',
-            value: 10.00,
+            value: 20.00,
             currency: 'BRL'
           });
         }
