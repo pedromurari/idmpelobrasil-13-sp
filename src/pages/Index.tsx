@@ -218,8 +218,8 @@ const Index = () => {
               independente da sua situação financeira.
             </p>
             <p className="text-center">
-              O investimento simbólico de R$ 10 garante seu compromisso e nossa capacidade de
-              organizar o melhor evento possível.
+              O investimento simbólico de R$ 20 garante seu compromisso e nossa capacidade de
+               organizar o melhor evento possível.
             </p>
             <p className="text-center text-primary font-bold">
               ⚠️ Aproveite: a próxima turma será pelo valor integral. Esta é uma oportunidade única!
