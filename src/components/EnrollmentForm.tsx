@@ -16,7 +16,7 @@ const TURMA_CONFIG = {
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
-    checkoutUrl: "https://chat.whatsapp.com/InAvjWj9VFuA3b3diiy4zc"
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP"
   },
   "04abr_tarde": {
     label: "04/04 - Tarde",
@@ -25,8 +25,8 @@ const TURMA_CONFIG = {
     horario: "14:00 às 17:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycby0LTuCDh0oBGRN_aDe_kQZ9V5rQypa-tSk6_c5flezTVYLivVYVmNTqTky4icSCzpwAg/exec",
-    checkoutUrl: "https://chat.whatsapp.com/ISeMBYm801i3NdsiwR9SNu"
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ"
   }
 };
 
@@ -92,7 +92,13 @@ export const EnrollmentForm = () => {
     const turmaConfig = TURMA_CONFIG[selectedTurma!];
 
     try {
-      const cleanPhone = whatsapp.replace(/\D/g, "");
+      let cleanPhone = whatsapp.replace(/\D/g, "");
+      // Remove leading "55" if user already typed the country code
+      if (cleanPhone.length >= 12 && cleanPhone.startsWith("55")) {
+        cleanPhone = cleanPhone.slice(2);
+      }
+      // Ensure max 11 digits (DDD + 9 digits)
+      cleanPhone = cleanPhone.slice(0, 11);
       const phoneToSend = "55" + cleanPhone;
 
       const formData = new FormData();
@@ -108,7 +114,7 @@ export const EnrollmentForm = () => {
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
-      const baseValue = 12.00;
+      const baseValue = 22.00;
       const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
 
       if (typeof window !== 'undefined' && (window as any).fbq) {
@@ -130,7 +136,7 @@ export const EnrollmentForm = () => {
           (window as any).fbq('track', 'InitiateCheckout', {
             content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
             content_type: 'product',
-            value: 10.00,
+            value: 20.00,
             currency: 'BRL'
           });
         }
@@ -271,7 +277,7 @@ export const EnrollmentForm = () => {
               Processando...
             </> :
 
-          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$10!</>
+          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$20!</>
           }
         </button>
 

@@ -60,7 +60,7 @@ const Index = () => {
                 <span className="flex items-center gap-1">👥 Vagas Limitadas</span>
               </div>
               <p className="text-2xl md:text-3xl font-bold text-primary mt-4">
-                Garanta seu Ingresso por APENAS R$10 Reais!    
+                Garanta seu Ingresso por APENAS R$20 Reais!    
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why R$10 Section */}
+      {/* Why R$20 Section */}
       <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
         <div className="section-container section-highlight">
           <div className="max-w-4xl mx-auto">
@@ -205,7 +205,7 @@ const Index = () => {
           <div className="text-lg text-muted-foreground space-y-4 leading-relaxed mb-8">
             <p className="text-center">
               Você deve estar se perguntando: "Como um curso presencial com certificado pode custar
-              apenas R$ 10?"
+               apenas R$ 20?"
             </p>
             <p className="font-semibold text-primary text-xl text-center">
               A resposta é simples: nossa missão é DEMOCRATIZAR o autoconhecimento.
@@ -218,8 +218,8 @@ const Index = () => {
               independente da sua situação financeira.
             </p>
             <p className="text-center">
-              O investimento simbólico de R$ 10 garante seu compromisso e nossa capacidade de
-              organizar o melhor evento possível.
+              O investimento simbólico de R$ 20 garante seu compromisso e nossa capacidade de
+               organizar o melhor evento possível.
             </p>
             <p className="text-center text-primary font-bold">
               ⚠️ Aproveite: a próxima turma será pelo valor integral. Esta é uma oportunidade única!
@@ -234,14 +234,14 @@ const Index = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Seu investimento hoje:</p>
-                  <p className="text-4xl font-bold price-shine">R$ 10</p>
+                  <p className="text-4xl font-bold price-shine">R$ 20</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Economia:</p>
-                  <p className="text-3xl font-bold text-primary">R$ 487</p>
+                  <p className="text-3xl font-bold text-primary">R$ 477</p>
                 </div>
               </div>
-              <p className="text-2xl font-bold price-shine">Sim, você está economizando 98%!</p>
+              <p className="text-2xl font-bold price-shine">Sim, você está economizando 96%!</p>
             </div>
 
           <div className="mt-8 bg-card/50 border border-primary/30 rounded-xl p-6">
@@ -253,7 +253,7 @@ const Index = () => {
                   {item}
                 </p>)}
             </div>
-              <p className="text-center text-xl font-bold price-shine mt-6">TUDO ISSO POR R$ 10!</p>
+              <p className="text-center text-xl font-bold price-shine mt-6">TUDO ISSO POR R$ 20!</p>
             </div>
           </div>
         </div>
@@ -280,7 +280,7 @@ const Index = () => {
                 👉 Você está a APENAS 1 CLIQUE de transformar sua vida
               </p>
               <p className="font-semibold text-primary text-xl">
-                👉 São apenas R$ 10 - menos que um almoço
+                👉 São apenas R$ 20 - menos que um almoço
               </p>
               <p className="font-semibold text-primary text-xl">
                 👉 Risco ZERO e retorno INFINITO
@@ -298,7 +298,7 @@ const Index = () => {
           });
         }}>
             <button className="w-full max-w-md mx-auto h-auto py-4 px-6 text-lg md:text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
-              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$10!
+              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$20!
             </button>
           </a>
 
@@ -325,7 +325,7 @@ const Index = () => {
 
           <Accordion type="single" collapsible className="space-y-4">
             <FAQItem value="faq-1" question="Nunca estudei numerologia. Este curso é para mim?" answer="SIM! Este curso foi desenvolvido especialmente para iniciantes. Você não precisa de conhecimento prévio. Vamos começar do zero e você sairá do evento já sabendo calcular e interpretar seu próprio mapa numerológico." />
-            <FAQItem value="faq-2" question="Por que apenas R$ 10? Qual é a pegadinha?" answer="Não há pegadinha! Nossa missão é democratizar o autoconhecimento. O valor simbólico garante seu compromisso com o curso e cobre custos básicos de material. Queremos que o máximo de pessoas possam ter acesso a essa transformação." />
+            <FAQItem value="faq-2" question="Por que apenas R$ 20? Qual é a pegadinha?" answer="Não há pegadinha! Nossa missão é democratizar o autoconhecimento. O valor simbólico garante seu compromisso com o curso e cobre custos básicos de material. Queremos que o máximo de pessoas possam ter acesso a essa transformação." />
             <FAQItem value="faq-3" question="O certificado é reconhecido?" answer="Sim! Você receberá um certificado de conclusão emitido pelo Instituto DespertaMente, válido como comprovação de participação e aprendizado em Numerologia Pitagórica Sistêmica." />
             <FAQItem value="faq-4" question="Quando e onde será o curso?" answer="O curso será realizado no dia 04/04 (Sábado), com duas turmas: Manhã (09h às 12h) e Tarde (14h às 17h), presencial em Pinheiros, São Paulo — Rua Oscar Freire, 2617 cj 408. As informações detalhadas serão enviadas imediatamente após sua inscrição, por WhatsApp e email." />
             <FAQItem value="faq-5" question="E se eu não puder comparecer depois de pagar?" answer="Entre em contato conosco com 48h de antecedência. Avaliaremos a possibilidade de transferir sua vaga para a próxima turma ou realizar o reembolso integral." />
