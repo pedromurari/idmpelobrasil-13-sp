@@ -19,7 +19,7 @@ import fotoSp5 from "@/assets/gallery-sp/foto5.jpeg";
 
 const photos = [
   { src: fotoSp1, alt: "Turma completa com Rodrygo Murari" },
-  { src: fotoSp2, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
+  
   { src: fotoSp3, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
   { src: fotoSp4, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
   { src: fotoSp5, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
