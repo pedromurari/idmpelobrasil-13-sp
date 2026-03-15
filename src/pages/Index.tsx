@@ -241,7 +241,7 @@ const Index = () => {
                   <p className="text-3xl font-bold text-primary">R$ 477</p>
                 </div>
               </div>
-              <p className="text-2xl font-bold price-shine">Sim, você está economizando 98%!</p>
+              <p className="text-2xl font-bold price-shine">Sim, você está economizando 96%!</p>
             </div>
 
           <div className="mt-8 bg-card/50 border border-primary/30 rounded-xl p-6">
