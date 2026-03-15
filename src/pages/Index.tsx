@@ -50,7 +50,7 @@ const Index = () => {
 
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
-                <p className="text-primary font-bold text-xl mb-2">🔥 2 TURMAS DISPONÍVEIS — 14 de Março no Centro do RJ!</p>
+                <p className="text-primary font-bold text-xl mb-2">🔥 2 TURMAS DISPONÍVEIS — 04 de Abril em Pinheiros, São Paulo!</p>
                 <p className="font-semibold text-foreground text-base">Vagas LIMITADAS! Escolha Manhã ou Tarde e garanta sua vaga agora!</p>
               </div>
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
