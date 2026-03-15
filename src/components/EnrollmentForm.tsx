@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 
-type TurmaOption = "07mar_manha" | "07mar_tarde" | null;
+type TurmaOption = "04abr_manha" | "04abr_tarde" | null;
 
 const TURMA_CONFIG = {
   "04abr_manha": {
