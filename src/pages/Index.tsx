@@ -195,7 +195,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why R$10 Section */}
+      {/* Why R$20 Section */}
       <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
         <div className="section-container section-highlight">
           <div className="max-w-4xl mx-auto">
