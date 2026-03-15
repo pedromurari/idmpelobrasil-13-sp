@@ -5,28 +5,28 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 
-type TurmaOption = "07mar_manha" | "07mar_tarde" | null;
+type TurmaOption = "04abr_manha" | "04abr_tarde" | null;
 
 const TURMA_CONFIG = {
-  "07mar_manha": {
-    label: "14/03 - Manhã",
-    data: "14 de Março",
+  "04abr_manha": {
+    label: "04/04 - Manhã",
+    data: "04 de Abril",
     diaSemana: "Sábado",
     horario: "09:00 às 12:00",
-    endereco: "Av. Presidente Wilson, 165 - Centro",
+    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycbzjfP4vl7CXoV7oztjfulh3s__XN4GLbDvupGL8YfrFxZCsT3JqsiTTYa_4giITjsvCMg/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAW"
+    sheetUrl: "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
+    checkoutUrl: "https://chat.whatsapp.com/InAvjWj9VFuA3b3diiy4zc"
   },
-  "07mar_tarde": {
-    label: "14/03 - Tarde",
-    data: "14 de Março",
+  "04abr_tarde": {
+    label: "04/04 - Tarde",
+    data: "04 de Abril",
     diaSemana: "Sábado",
     horario: "14:00 às 17:00",
-    endereco: "Av. Presidente Wilson, 165 - Centro",
+    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycbzUDeaBI0V0-IJvzn0gNR_5rROPZl1hLJQW91tQ9NHcxFAPEngazxKAoAtooIdLezte/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCNAX"
+    sheetUrl: "https://script.google.com/macros/s/AKfycby0LTuCDh0oBGRN_aDe_kQZ9V5rQypa-tSk6_c5flezTVYLivVYVmNTqTky4icSCzpwAg/exec",
+    checkoutUrl: "https://chat.whatsapp.com/ISeMBYm801i3NdsiwR9SNu"
   }
 };
 
@@ -135,15 +135,7 @@ export const EnrollmentForm = () => {
           });
         }
 
-        // Construir URL com parâmetros pré-preenchidos
-        const cleanPhone = whatsapp.replace(/\D/g, "");
-        const queryParams = new URLSearchParams({
-          name: name.trim(),
-          telephone: cleanPhone
-        });
-        const finalUrl = `${turmaConfig.checkoutUrl}?${queryParams.toString()}`;
-
-        window.location.href = finalUrl;
+        window.location.href = turmaConfig.checkoutUrl;
       }, 1500);
     } catch (error) {
       console.error("Error:", error);
@@ -211,7 +203,7 @@ export const EnrollmentForm = () => {
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - 14 de Março
+            Escolha sua turma - 04 de Abril
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
