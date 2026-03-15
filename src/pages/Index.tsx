@@ -36,7 +36,7 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas em PinheirSP.</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas em Pinheiros SP.</span>
             </h1>
             <h2 className="text-lg md:text-2xl text-muted-foreground mt-4 mb-2 font-semibold">
               Com Rodrygo Murari: Saia com Seu Mapa Essencial Pronto, Certificado e Material de Apoio Exclusivo para Aplicar Imediatamente.
@@ -51,7 +51,7 @@ const Index = () => {
 
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
-                <p className="text-primary font-bold text-xl mb-2">🔥 2 TURMAS DISPONÍVEIS — 14 de Março no Centro do RJ!</p>
+                <p className="text-primary font-bold text-xl mb-2">🔥 2 TURMAS DISPONÍVEIS — 04 de Abril em Pinheiros SP!</p>
                 <p className="font-semibold text-foreground text-base">Vagas LIMITADAS! Escolha Manhã ou Tarde e garanta sua vaga agora!</p>
               </div>
               <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
@@ -327,7 +327,7 @@ const Index = () => {
             <FAQItem value="faq-1" question="Nunca estudei numerologia. Este curso é para mim?" answer="SIM! Este curso foi desenvolvido especialmente para iniciantes. Você não precisa de conhecimento prévio. Vamos começar do zero e você sairá do evento já sabendo calcular e interpretar seu próprio mapa numerológico." />
             <FAQItem value="faq-2" question="Por que apenas R$ 10? Qual é a pegadinha?" answer="Não há pegadinha! Nossa missão é democratizar o autoconhecimento. O valor simbólico garante seu compromisso com o curso e cobre custos básicos de material. Queremos que o máximo de pessoas possam ter acesso a essa transformação." />
             <FAQItem value="faq-3" question="O certificado é reconhecido?" answer="Sim! Você receberá um certificado de conclusão emitido pelo Instituto DespertaMente, válido como comprovação de participação e aprendizado em Numerologia Pitagórica Sistêmica." />
-            <FAQItem value="faq-4" question="Quando e onde será o curso?" answer="O curso será realizado no dia 14/03 (Sábado), com duas turmas: Manhã (09h às 12h) e Tarde (14h às 17h), presencial no Centro do Rio de Janeiro — Av. Presidente Wilson, 165. As informações detalhadas serão enviadas imediatamente após sua inscrição, por WhatsApp e email." />
+            <FAQItem value="faq-4" question="Quando e onde será o curso?" answer="O curso será realizado no dia 04/04 (Sábado), com duas turmas: Manhã (09h às 12h) e Tarde (14h às 17h), presencial em Pinheiros, São Paulo — Rua Oscar Freire, 2617 cj 408. As informações detalhadas serão enviadas imediatamente após sua inscrição, por WhatsApp e email." />
             <FAQItem value="faq-5" question="E se eu não puder comparecer depois de pagar?" answer="Entre em contato conosco com 48h de antecedência. Avaliaremos a possibilidade de transferir sua vaga para a próxima turma ou realizar o reembolso integral." />
             <FAQItem value="faq-6" question="Preciso levar algum material?" answer="Não! Todo material didático está incluso. Você só precisa levar você mesmo, com mente aberta e vontade de aprender. Recomendamos trazer uma garrafa de água e um caderno extra se quiser fazer anotações pessoais." />
             <FAQItem value="faq-7" question="Vou conseguir fazer cálculos numerológicos depois do curso?" answer="COM CERTEZA! O curso é 100% prático. Você vai calcular seu próprio mapa durante o evento e sairá de lá apto a calcular para outras pessoas. É aprender fazendo!" />
