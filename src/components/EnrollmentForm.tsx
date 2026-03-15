@@ -92,7 +92,13 @@ export const EnrollmentForm = () => {
     const turmaConfig = TURMA_CONFIG[selectedTurma!];
 
     try {
-      const cleanPhone = whatsapp.replace(/\D/g, "");
+      let cleanPhone = whatsapp.replace(/\D/g, "");
+      // Remove leading "55" if user already typed the country code
+      if (cleanPhone.length >= 12 && cleanPhone.startsWith("55")) {
+        cleanPhone = cleanPhone.slice(2);
+      }
+      // Ensure max 11 digits (DDD + 9 digits)
+      cleanPhone = cleanPhone.slice(0, 11);
       const phoneToSend = "55" + cleanPhone;
 
       const formData = new FormData();
