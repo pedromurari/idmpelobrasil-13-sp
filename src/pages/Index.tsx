@@ -205,7 +205,7 @@ const Index = () => {
           <div className="text-lg text-muted-foreground space-y-4 leading-relaxed mb-8">
             <p className="text-center">
               Você deve estar se perguntando: "Como um curso presencial com certificado pode custar
-              apenas R$ 10?"
+               apenas R$ 20?"
             </p>
             <p className="font-semibold text-primary text-xl text-center">
               A resposta é simples: nossa missão é DEMOCRATIZAR o autoconhecimento.
