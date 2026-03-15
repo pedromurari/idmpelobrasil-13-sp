@@ -114,7 +114,7 @@ export const EnrollmentForm = () => {
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
-      const baseValue = 12.00;
+      const baseValue = 22.00;
       const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
 
       if (typeof window !== 'undefined' && (window as any).fbq) {
