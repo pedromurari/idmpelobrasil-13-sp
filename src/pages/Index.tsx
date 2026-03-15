@@ -280,7 +280,7 @@ const Index = () => {
                 👉 Você está a APENAS 1 CLIQUE de transformar sua vida
               </p>
               <p className="font-semibold text-primary text-xl">
-                👉 São apenas R$ 10 - menos que um almoço
+                👉 São apenas R$ 20 - menos que um almoço
               </p>
               <p className="font-semibold text-primary text-xl">
                 👉 Risco ZERO e retorno INFINITO
