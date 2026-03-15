@@ -25,8 +25,8 @@ const TURMA_CONFIG = {
     horario: "14:00 às 17:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycby0LTuCDh0oBGRN_aDe_kQZ9V5rQypa-tSk6_c5flezTVYLivVYVmNTqTky4icSCzpwAg/exec",
-    checkoutUrl: "https://chat.whatsapp.com/ISeMBYm801i3NdsiwR9SNu"
+    sheetUrl: "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ"
   }
 };
 
