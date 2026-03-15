@@ -12,7 +12,7 @@ import foto8 from "@/assets/gallery/foto8.jpeg";
 import foto9 from "@/assets/gallery/foto9.jpeg";
 import foto10 from "@/assets/gallery/foto10.jpeg";
 import fotoSp1 from "@/assets/gallery-sp/foto1.jpeg";
-import fotoSp2 from "@/assets/gallery-sp/foto2.jpeg";
+
 import fotoSp3 from "@/assets/gallery-sp/foto3.jpeg";
 import fotoSp4 from "@/assets/gallery-sp/foto4.jpeg";
 import fotoSp5 from "@/assets/gallery-sp/foto5.jpeg";
