@@ -35,7 +35,7 @@ const Index = () => {
           {/* Headline */}
           <div className="text-center mb-8 animate-fade-in">
             <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas no RJ.</span>
+              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas em SP.</span>
             </h1>
             <h2 className="text-lg md:text-2xl text-muted-foreground mt-4 mb-2 font-semibold">
               Com Rodrygo Murari: Saia com Seu Mapa Essencial Pronto, Certificado e Material de Apoio Exclusivo para Aplicar Imediatamente.
