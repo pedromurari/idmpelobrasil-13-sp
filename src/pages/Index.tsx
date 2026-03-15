@@ -234,7 +234,7 @@ const Index = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Seu investimento hoje:</p>
-                  <p className="text-4xl font-bold price-shine">R$ 10</p>
+                  <p className="text-4xl font-bold price-shine">R$ 20</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Economia:</p>
