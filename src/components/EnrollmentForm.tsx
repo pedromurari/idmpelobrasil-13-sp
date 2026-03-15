@@ -277,7 +277,7 @@ export const EnrollmentForm = () => {
               Processando...
             </> :
 
-          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$10!</>
+          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$20!</>
           }
         </button>
 
