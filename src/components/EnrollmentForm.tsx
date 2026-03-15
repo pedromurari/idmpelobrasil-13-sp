@@ -16,7 +16,7 @@ const TURMA_CONFIG = {
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
-    checkoutUrl: "https://chat.whatsapp.com/InAvjWj9VFuA3b3diiy4zc"
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP"
   },
   "04abr_tarde": {
     label: "04/04 - Tarde",
