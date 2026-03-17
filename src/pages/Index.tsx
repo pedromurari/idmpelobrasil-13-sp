@@ -10,6 +10,7 @@ import rodrygoMurari from "@/assets/rodrygo-murari.png";
 const Index = () => {
   useEffect(() => {
 
+
     // Meta Pixel is loaded in index.html, PageView fires automatically
   }, []);return <div className="min-h-screen relative">
       {/* Geometric Background Numbers */}
@@ -44,9 +45,8 @@ const Index = () => {
             
             {/* Video de Vendas */}
             <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
-              <div className="aspect-video w-[calc(100%+30px)] md:w-full -ml-[15px] md:ml-0">
-                <iframe className="w-full h-full md:rounded-xl" src="https://www.youtube.com/embed/qNFu4xW7wZc?si=rMMsCOg4NgqCAtJJ&controls=0" title="Vídeo de Vendas - Curso de Numerologia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
-              </div>
+              
+            
             </div>
 
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
