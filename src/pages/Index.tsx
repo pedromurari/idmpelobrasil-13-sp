@@ -46,8 +46,7 @@ const Index = () => {
             
             {/* Video de Vendas */}
             <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
-              
-            
+              <VideoPlayer />
             </div>
 
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
