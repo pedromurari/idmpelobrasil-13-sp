@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
-import thumbnail from "@/assets/video-thumbnail.png";
+import thumbnail from "@/assets/gallery/foto9.jpeg";
 
 export const VideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
