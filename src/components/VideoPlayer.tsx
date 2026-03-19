@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Play } from "lucide-react";
-import thumbnail from "@/assets/gallery-sp/foto4.jpeg";
+import thumbnail from "@/assets/video-thumbnail.png";
 
 export const VideoPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -18,13 +18,19 @@ export const VideoPlayer = () => {
             alt="Clique para assistir o vídeo"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-primary rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Play className="w-8 h-8 md:w-10 md:h-10 text-primary-foreground ml-1" fill="currentColor" />
+          <div className="absolute inset-0 bg-black/60 group-hover:bg-black/50 transition-colors duration-300" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            <div className="w-20 h-20 md:w-24 md:h-24 bg-primary rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(234,179,8,0.5)] group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(234,179,8,0.7)] transition-all duration-300 animate-pulse">
+              <Play className="w-10 h-10 md:w-12 md:h-12 text-primary-foreground ml-1" fill="currentColor" />
             </div>
-            <p className="text-white font-bold text-lg mt-4">Clique para assistir</p>
-            <p className="text-white/80 text-sm">Descubra como transformar sua vida</p>
+            <div className="text-center mt-2">
+              <p className="text-white font-extrabold text-xl md:text-2xl drop-shadow-lg">
+                ▶ ASSISTA ANTES DE SE INSCREVER
+              </p>
+              <p className="text-white/90 text-sm md:text-base mt-1 font-medium">
+                Descubra o que te espera nessa experiência transformadora
+              </p>
+            </div>
           </div>
         </button>
       ) : (
