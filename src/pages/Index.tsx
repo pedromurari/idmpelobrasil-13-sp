@@ -7,6 +7,7 @@ import { StudentGallery } from "@/components/StudentGallery";
 import { Accordion } from "@/components/ui/accordion";
 import logoDespertaMente from "@/assets/despertamente-simbolo.png";
 import rodrygoMurari from "@/assets/rodrygo-murari.png";
+import { VideoPlayer } from "@/components/VideoPlayer";
 const Index = () => {
   useEffect(() => {
 
