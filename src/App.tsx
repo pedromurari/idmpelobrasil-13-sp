@@ -33,7 +33,10 @@ const MetaPixelTracker = () => {
         userData: {}, // PageView inicial geralmente não tem dados de usuário vinculados
         customData: {}
       })
-    }).catch(err => console.error("Erro CAPI PageView:", err));
+    })
+    .then(res => res.json())
+    .then(data => console.log("CAPI PageView Enviado:", data))
+    .catch(err => console.error("Erro CAPI PageView:", err));
   }, []);
 
   return null;

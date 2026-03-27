@@ -19,11 +19,13 @@ export default async function handler(req: Request) {
 
   try {
     const body = await req.json();
+    console.log('Recebido evento:', body.eventName, 'ID:', body.eventID);
+
     const { 
       eventName, 
       eventID, 
-      userData, 
-      customData, 
+      userData = {}, 
+      customData = {}, 
       testCode 
     } = body;
 
@@ -31,14 +33,14 @@ export default async function handler(req: Request) {
     const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN;
 
     if (!ACCESS_TOKEN) {
-      console.error('META_ACCESS_TOKEN is not set');
+      console.error('ERRO: META_ACCESS_TOKEN não configurado');
       return new Response(JSON.stringify({ error: 'Server configuration error' }), { 
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    // Hash user data if provided
+    // Preparar user_data com hash SHA-256
     const user_data: any = {
       client_ip_address: req.headers.get('x-forwarded-for') || '127.0.0.1',
       client_user_agent: req.headers.get('user-agent') || '',
@@ -68,6 +70,8 @@ export default async function handler(req: Request) {
       payload.test_event_code = testCode;
     }
 
+    console.log('Enviando para Meta CAPI:', eventName, { event_id: eventID, testCode });
+
     const response = await fetch(
       `https://graph.facebook.com/v18.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
       {
@@ -80,13 +84,14 @@ export default async function handler(req: Request) {
     );
 
     const result = await response.json();
+    console.log('Resposta da Meta CAPI:', JSON.stringify(result));
 
     return new Response(JSON.stringify(result), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
   } catch (error: any) {
-    console.error('Meta CAPI Error:', error);
+    console.error('Meta CAPI Exception:', error.message);
     return new Response(JSON.stringify({ error: error.message }), { 
       status: 500,
       headers: { 'Content-Type': 'application/json' }
