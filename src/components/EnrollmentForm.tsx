@@ -116,7 +116,9 @@ export const EnrollmentForm = () => {
       // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
       const baseValue = 22.00;
       const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
+      const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
 
+      // 1. Disparo do Pixel (Browser-side) com eventID para desduplicação
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
           content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
@@ -124,8 +126,38 @@ export const EnrollmentForm = () => {
           content_ids: [selectedTurma],
           value: parseFloat(uniqueValue.toFixed(2)),
           currency: 'BRL'
-        });
+        }, { eventID: eventId });
       }
+
+      // 2. Disparo da Conversions API (Server-side) via Edge Function
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const testCode = urlParams.get('testCode');
+
+        await fetch('/api/meta-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventName: 'Lead',
+            eventID: eventId,
+            testCode: testCode,
+            userData: {
+              firstName: name.split(' ')[0],
+              lastName: name.split(' ').slice(1).join(' '),
+              phone: phoneToSend,
+            },
+            customData: {
+              content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
+              content_category: 'Curso Presencial',
+              value: parseFloat(uniqueValue.toFixed(2)),
+              currency: 'BRL'
+            }
+          })
+        });
+      } catch (capiError) {
+        console.error("Erro ao enviar para CAPI:", capiError);
+      }
+
       toast({
         title: "✅ Dados salvos com sucesso!",
         description: "Redirecionando para o pagamento..."
@@ -138,7 +170,7 @@ export const EnrollmentForm = () => {
             content_type: 'product',
             value: 20.00,
             currency: 'BRL'
-          });
+          }, { eventID: `${eventId}_checkout` }); // Novo ID para InitiateCheckout
         }
 
         window.location.href = turmaConfig.checkoutUrl;
