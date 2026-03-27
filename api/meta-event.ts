@@ -1,5 +1,3 @@
-import { NextRequest, NextResponse } from 'next/server';
-
 export const config = {
   runtime: 'edge',
 };
@@ -11,9 +9,12 @@ async function sha256(message: string) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-export default async function handler(req: NextRequest) {
+export default async function handler(req: Request) {
   if (req.method !== 'POST') {
-    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), { 
+      status: 405,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   try {
@@ -31,7 +32,10 @@ export default async function handler(req: NextRequest) {
 
     if (!ACCESS_TOKEN) {
       console.error('META_ACCESS_TOKEN is not set');
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+      return new Response(JSON.stringify({ error: 'Server configuration error' }), { 
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // Hash user data if provided
@@ -77,9 +81,15 @@ export default async function handler(req: NextRequest) {
 
     const result = await response.json();
 
-    return NextResponse.json(result);
+    return new Response(JSON.stringify(result), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
   } catch (error: any) {
     console.error('Meta CAPI Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
