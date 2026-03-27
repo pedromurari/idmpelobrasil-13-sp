@@ -176,7 +176,7 @@ export const EnrollmentForm = () => {
 
         // Disparo da CAPI para InitiateCheckout
         const urlParams = new URLSearchParams(window.location.search);
-        const testCode = urlParams.get('testCode');
+        const testCode = urlParams.get('testCode') || 'TEST57371';
         fetch('/api/meta-event', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

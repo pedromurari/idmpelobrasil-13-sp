@@ -21,8 +21,9 @@ const MetaPixelTracker = () => {
 
     // 2. Disparo da CAPI (Server)
     const urlParams = new URLSearchParams(window.location.search);
-    const testCode = urlParams.get('testCode');
+    const testCode = urlParams.get('testCode') || 'TEST57371';
     
+    console.log("CAPI PageView Enviado com ID:", eventId, "e TestCode:", testCode);
     fetch('/api/meta-event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
