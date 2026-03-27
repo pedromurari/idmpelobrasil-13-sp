@@ -164,14 +164,39 @@ export const EnrollmentForm = () => {
       });
 
       setTimeout(() => {
+        const checkoutEventId = `${eventId}_checkout`;
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'InitiateCheckout', {
             content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
             content_type: 'product',
             value: 20.00,
             currency: 'BRL'
-          }, { eventID: `${eventId}_checkout` }); // Novo ID para InitiateCheckout
+          }, { eventID: checkoutEventId });
         }
+
+        // Disparo da CAPI para InitiateCheckout
+        const urlParams = new URLSearchParams(window.location.search);
+        const testCode = urlParams.get('testCode');
+        fetch('/api/meta-event', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventName: 'InitiateCheckout',
+            eventID: checkoutEventId,
+            testCode: testCode,
+            userData: {
+              firstName: name.split(' ')[0],
+              lastName: name.split(' ').slice(1).join(' '),
+              phone: phoneToSend,
+            },
+            customData: {
+              content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
+              content_type: 'product',
+              value: 20.00,
+              currency: 'BRL'
+            }
+          })
+        }).catch(err => console.error("Erro CAPI InitiateCheckout:", err));
 
         window.location.href = turmaConfig.checkoutUrl;
       }, 1500);
