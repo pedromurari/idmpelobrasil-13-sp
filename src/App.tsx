@@ -11,19 +11,27 @@ const queryClient = new QueryClient();
 
 const MetaPixelTracker = () => {
   useEffect(() => {
+    // Função auxiliar para capturar cookies
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return undefined;
+    };
+
     // Gerar um eventID único para o PageView
     const eventId = `npa_pv_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
     
-    // 1. Disparo do Pixel (Browser)
+    // 1. Disparo do Pixel (Browser) - PageView já restaurado no index.html
+    // Disparamos aqui novamente com o eventID para garantir a desduplicação
     if (typeof window !== 'undefined' && (window as any).fbq) {
       (window as any).fbq('track', 'PageView', {}, { eventID: eventId });
     }
 
     // 2. Disparo da CAPI (Server)
     const urlParams = new URLSearchParams(window.location.search);
-    const testCode = urlParams.get('testCode') || 'TEST57371';
+    const testCode = urlParams.get('testCode');
     
-    console.log("CAPI PageView Enviado com ID:", eventId, "e TestCode:", testCode);
     fetch('/api/meta-event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,12 +39,12 @@ const MetaPixelTracker = () => {
         eventName: 'PageView',
         eventID: eventId,
         testCode: testCode,
-        userData: {}, // PageView inicial geralmente não tem dados de usuário vinculados
+        fbp: getCookie('_fbp'),
+        fbc: getCookie('_fbc'),
+        userData: {}, 
         customData: {}
       })
     })
-    .then(res => res.json())
-    .then(data => console.log("CAPI PageView Enviado:", data))
     .catch(err => console.error("Erro CAPI PageView:", err));
   }, []);
 

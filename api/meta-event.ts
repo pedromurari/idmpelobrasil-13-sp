@@ -26,6 +26,8 @@ export default async function handler(req: Request) {
       eventID, 
       userData = {}, 
       customData = {}, 
+      fbp,
+      fbc,
       testCode 
     } = body;
 
@@ -40,11 +42,14 @@ export default async function handler(req: Request) {
       });
     }
 
-    // Preparar user_data com hash SHA-256
+    // Preparar user_data com hash SHA-256 e parâmetros de navegador
     const user_data: any = {
       client_ip_address: req.headers.get('x-forwarded-for') || '127.0.0.1',
       client_user_agent: req.headers.get('user-agent') || '',
     };
+
+    if (fbp) user_data.fbp = fbp;
+    if (fbc) user_data.fbc = fbc;
 
     if (userData.email) user_data.em = [await sha256(userData.email.trim().toLowerCase())];
     if (userData.phone) user_data.ph = [await sha256(userData.phone.replace(/\D/g, ''))];

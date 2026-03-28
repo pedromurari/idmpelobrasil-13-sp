@@ -12,7 +12,7 @@ const TURMA_CONFIG = {
     label: "04/04 - Manhã",
     data: "04 de Abril",
     diaSemana: "Sábado",
-    horario: "09:00 às 12:00",
+    horario: "09:00 às 13:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
@@ -22,7 +22,7 @@ const TURMA_CONFIG = {
     label: "04/04 - Tarde",
     data: "04 de Abril",
     diaSemana: "Sábado",
-    horario: "14:00 às 17:00",
+    horario: "14:00 às 18:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
     enderecoDefinido: true,
     sheetUrl: "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
@@ -117,15 +117,19 @@ export const EnrollmentForm = () => {
       const baseValue = 22.00;
       const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
       const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
+      // Função auxiliar para capturar cookies
+      const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+        return undefined;
+      };
 
       // 1. Disparo do Pixel (Browser-side) com eventID para desduplicação
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
-          content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-          content_category: 'Curso Presencial',
-          content_ids: [selectedTurma],
-          value: parseFloat(uniqueValue.toFixed(2)),
-          currency: 'BRL'
+          content_name: `Inscrição - ${turmaConfig.label}`,
+          status: 'pending'
         }, { eventID: eventId });
       }
 
@@ -136,23 +140,25 @@ export const EnrollmentForm = () => {
 
         await fetch('/api/meta-event', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             eventName: 'Lead',
             eventID: eventId,
             testCode: testCode,
+            fbp: getCookie('_fbp'),
+            fbc: getCookie('_fbc'),
             userData: {
+              phone: phoneToSend,
               firstName: name.split(' ')[0],
               lastName: name.split(' ').slice(1).join(' '),
-              phone: phoneToSend,
             },
             customData: {
-              content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-              content_category: 'Curso Presencial',
-              value: parseFloat(uniqueValue.toFixed(2)),
-              currency: 'BRL'
+              content_name: `Inscrição - ${turmaConfig.label}`,
+              status: 'pending'
             }
-          })
+          }),
         });
       } catch (capiError) {
         console.error("Erro ao enviar para CAPI:", capiError);
@@ -176,7 +182,7 @@ export const EnrollmentForm = () => {
 
         // Disparo da CAPI para InitiateCheckout
         const urlParams = new URLSearchParams(window.location.search);
-        const testCode = urlParams.get('testCode') || 'TEST57371';
+        const testCode = urlParams.get('testCode');
         fetch('/api/meta-event', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -184,6 +190,8 @@ export const EnrollmentForm = () => {
             eventName: 'InitiateCheckout',
             eventID: checkoutEventId,
             testCode: testCode,
+            fbp: getCookie('_fbp'),
+            fbc: getCookie('_fbc'),
             userData: {
               firstName: name.split(' ')[0],
               lastName: name.split(' ').slice(1).join(' '),
