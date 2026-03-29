@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
+import { MetaIdentity } from "../utils/meta-identity";
 
 type TurmaOption = "04abr_manha" | "04abr_tarde" | null;
 
@@ -117,23 +118,28 @@ export const EnrollmentForm = () => {
       const baseValue = 22.00;
       const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
       const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
-      // Função auxiliar para capturar cookies
-      const getCookie = (name: string) => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop()?.split(';').shift();
-        return undefined;
-      };
+      // 1. Obter Identidade Meta
+      const { externalId, fbp, fbc } = MetaIdentity.getIdentity();
 
-      // 1. Disparo do Pixel (Browser-side) com eventID para desduplicação
+      // 2. Salvar dados do usuário para persistência (correspondência avançada futura)
+      MetaIdentity.saveUserData({
+        phone: phoneToSend,
+        firstName: name.split(' ')[0],
+        lastName: name.split(' ').slice(1).join(' '),
+      });
+
+      // 3. Disparo do Pixel (Browser-side) com eventID para desduplicação
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Lead', {
           content_name: `Inscrição - ${turmaConfig.label}`,
           status: 'pending'
-        }, { eventID: eventId });
+        }, { 
+          eventID: eventId,
+          external_id: externalId
+        });
       }
 
-      // 2. Disparo da Conversions API (Server-side) via Edge Function
+      // 4. Disparo da Conversions API (Server-side) via Edge Function
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const testCode = urlParams.get('testCode');
@@ -147,8 +153,9 @@ export const EnrollmentForm = () => {
             eventName: 'Lead',
             eventID: eventId,
             testCode: testCode,
-            fbp: getCookie('_fbp'),
-            fbc: getCookie('_fbc'),
+            fbp: fbp,
+            fbc: fbc,
+            externalId: externalId,
             userData: {
               phone: phoneToSend,
               firstName: name.split(' ')[0],
@@ -171,13 +178,18 @@ export const EnrollmentForm = () => {
 
       setTimeout(() => {
         const checkoutEventId = `${eventId}_checkout`;
+        const { externalId, fbp, fbc } = MetaIdentity.getIdentity();
+
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'InitiateCheckout', {
             content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
             content_type: 'product',
             value: 20.00,
             currency: 'BRL'
-          }, { eventID: checkoutEventId });
+          }, { 
+            eventID: checkoutEventId,
+            external_id: externalId
+          });
         }
 
         // Disparo da CAPI para InitiateCheckout
@@ -190,8 +202,9 @@ export const EnrollmentForm = () => {
             eventName: 'InitiateCheckout',
             eventID: checkoutEventId,
             testCode: testCode,
-            fbp: getCookie('_fbp'),
-            fbc: getCookie('_fbc'),
+            fbp: fbp,
+            fbc: fbc,
+            externalId: externalId,
             userData: {
               firstName: name.split(' ')[0],
               lastName: name.split(' ').slice(1).join(' '),

@@ -28,6 +28,7 @@ export default async function handler(req: Request) {
       customData = {}, 
       fbp,
       fbc,
+      externalId,
       testCode 
     } = body;
 
@@ -50,6 +51,7 @@ export default async function handler(req: Request) {
 
     if (fbp) user_data.fbp = fbp;
     if (fbc) user_data.fbc = fbc;
+    if (externalId) user_data.external_id = externalId;
 
     if (userData.email) user_data.em = [await sha256(userData.email.trim().toLowerCase())];
     if (userData.phone) user_data.ph = [await sha256(userData.phone.replace(/\D/g, ''))];
