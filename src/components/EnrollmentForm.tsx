@@ -106,10 +106,11 @@ export const EnrollmentForm = () => {
       params.append("name", name.trim());
       params.append("phone", phoneToSend);
 
-      await fetch(turmaConfig.sheetUrl, {
+      const urlWithParams = `${turmaConfig.sheetUrl}?${params.toString()}`;
+
+      await fetch(urlWithParams, {
         method: "POST",
         mode: "no-cors",
-        body: params.toString(),
       });
 
       // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
