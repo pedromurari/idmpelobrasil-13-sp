@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
@@ -10,25 +9,27 @@ type TurmaOption = "04abr_manha" | "04abr_tarde" | null;
 
 const TURMA_CONFIG = {
   "04abr_manha": {
-    label: "04/04 - Manhã",
+    label: "04/04 - Manha",
     data: "04 de Abril",
-    diaSemana: "Sábado",
-    horario: "09:00 às 13:00",
-    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
+    diaSemana: "Sabado",
+    horario: "09:00 as 13:00",
+    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP"
+    sheetUrl:
+      "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP",
   },
   "04abr_tarde": {
     label: "04/04 - Tarde",
     data: "04 de Abril",
-    diaSemana: "Sábado",
-    horario: "14:00 às 18:00",
-    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, São Paulo",
+    diaSemana: "Sabado",
+    horario: "14:00 as 18:00",
+    endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
     enderecoDefinido: true,
-    sheetUrl: "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ"
-  }
+    sheetUrl:
+      "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ",
+  },
 };
 
 export const EnrollmentForm = () => {
@@ -42,46 +43,49 @@ export const EnrollmentForm = () => {
     const numbers = value.replace(/\D/g, "");
     if (numbers.length <= 2) {
       return numbers;
-    } else if (numbers.length <= 6) {
-      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
-    } else if (numbers.length <= 10) {
-      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
-    } else {
-      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
     }
+    if (numbers.length <= 6) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+    }
+    if (numbers.length <= 10) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
+    }
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
   };
 
   const handleWhatsAppChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatWhatsApp(e.target.value);
-    setWhatsapp(formatted);
+    setWhatsapp(formatWhatsApp(e.target.value));
   };
 
   const validateForm = () => {
     if (name.trim().length < 3) {
       toast({
-        title: "Nome inválido",
-        description: "Por favor, digite seu nome completo (mínimo 3 caracteres)",
-        variant: "destructive"
+        title: "Nome invalido",
+        description: "Digite seu nome completo com pelo menos 3 caracteres.",
+        variant: "destructive",
       });
       return false;
     }
+
     const numbers = whatsapp.replace(/\D/g, "");
     if (numbers.length < 10 || numbers.length > 11) {
       toast({
-        title: "WhatsApp inválido",
-        description: "Por favor, digite um número válido com DDD",
-        variant: "destructive"
+        title: "WhatsApp invalido",
+        description: "Digite um numero valido com DDD.",
+        variant: "destructive",
       });
       return false;
     }
+
     if (!selectedTurma) {
       toast({
         title: "Selecione uma turma",
-        description: "Por favor, escolha a turma que deseja participar",
-        variant: "destructive"
+        description: "Escolha o horario que deseja reservar na Edicao Sao Paulo.",
+        variant: "destructive",
       });
       return false;
     }
+
     return true;
   };
 
@@ -94,13 +98,11 @@ export const EnrollmentForm = () => {
 
     try {
       let cleanPhone = whatsapp.replace(/\D/g, "");
-      // Remove leading "55" if user already typed the country code
       if (cleanPhone.length >= 12 && cleanPhone.startsWith("55")) {
         cleanPhone = cleanPhone.slice(2);
       }
-      // Ensure max 11 digits (DDD + 9 digits)
       cleanPhone = cleanPhone.slice(0, 11);
-      const phoneToSend = "55" + cleanPhone;
+      const phoneToSend = `55${cleanPhone}`;
 
       const formData = new FormData();
       formData.append("name", name.trim());
@@ -110,61 +112,58 @@ export const EnrollmentForm = () => {
       await fetch(turmaConfig.sheetUrl, {
         method: "POST",
         body: formData,
-        mode: "no-cors"
+        mode: "no-cors",
       });
 
-      // Com no-cors não conseguimos verificar response.ok, assumimos sucesso
-      // Valores dinâmicos para o Meta Pixel (turma + timestamp para variação)
-      const baseValue = 22.00;
-      const uniqueValue = baseValue + Date.now() % 100 / 100; // Adiciona variação de centavos
-      const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
-      // 1. Obter Identidade Meta
+      const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
       const { externalId, fbp, fbc } = MetaIdentity.getIdentity();
 
-      // 2. Salvar dados do usuário para persistência (correspondência avançada futura)
       MetaIdentity.saveUserData({
         phone: phoneToSend,
-        firstName: name.split(' ')[0],
-        lastName: name.split(' ').slice(1).join(' '),
+        firstName: name.split(" ")[0],
+        lastName: name.split(" ").slice(1).join(" "),
       });
 
-      // 3. Disparo do Pixel (Browser-side) com eventID para desduplicação
-      if (typeof window !== 'undefined' && (window as any).fbq) {
-        (window as any).fbq('track', 'Lead', {
-          content_name: `Inscrição - ${turmaConfig.label}`,
-          status: 'pending'
-        }, { 
-          eventID: eventId,
-          external_id: externalId
-        });
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq(
+          "track",
+          "Lead",
+          {
+            content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+            status: "pending",
+          },
+          {
+            eventID: eventId,
+            external_id: externalId,
+          }
+        );
       }
 
-      // 4. Disparo da Conversions API (Server-side) via Edge Function
       try {
         const urlParams = new URLSearchParams(window.location.search);
-        const testCode = urlParams.get('testCode');
+        const testCode = urlParams.get("testCode");
 
-        await fetch('/api/meta-event', {
-          method: 'POST',
+        await fetch("/api/meta-event", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            eventName: 'Lead',
+            eventName: "Lead",
             eventID: eventId,
-            testCode: testCode,
-            fbp: fbp,
-            fbc: fbc,
-            externalId: externalId,
+            testCode,
+            fbp,
+            fbc,
+            externalId,
             userData: {
               phone: phoneToSend,
-              firstName: name.split(' ')[0],
-              lastName: name.split(' ').slice(1).join(' '),
+              firstName: name.split(" ")[0],
+              lastName: name.split(" ").slice(1).join(" "),
             },
             customData: {
-              content_name: `Inscrição - ${turmaConfig.label}`,
-              status: 'pending'
-            }
+              content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+              status: "pending",
+            },
           }),
         });
       } catch (capiError) {
@@ -172,52 +171,57 @@ export const EnrollmentForm = () => {
       }
 
       toast({
-        title: "✅ Dados salvos com sucesso!",
-        description: "Redirecionando para o pagamento..."
+        title: "Reserva iniciada com sucesso",
+        description: "Redirecionando voce para o pagamento da sua vaga.",
       });
 
       setTimeout(() => {
         const checkoutEventId = `${eventId}_checkout`;
-        const { externalId, fbp, fbc } = MetaIdentity.getIdentity();
+        const { externalId: freshExternalId, fbp: freshFbp, fbc: freshFbc } =
+          MetaIdentity.getIdentity();
 
-        if (typeof window !== 'undefined' && (window as any).fbq) {
-          (window as any).fbq('track', 'InitiateCheckout', {
-            content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-            content_type: 'product',
-            value: 20.00,
-            currency: 'BRL'
-          }, { 
-            eventID: checkoutEventId,
-            external_id: externalId
-          });
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq(
+            "track",
+            "InitiateCheckout",
+            {
+              content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+              content_type: "product",
+              value: 20,
+              currency: "BRL",
+            },
+            {
+              eventID: checkoutEventId,
+              external_id: freshExternalId,
+            }
+          );
         }
 
-        // Disparo da CAPI para InitiateCheckout
         const urlParams = new URLSearchParams(window.location.search);
-        const testCode = urlParams.get('testCode');
-        fetch('/api/meta-event', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        const testCode = urlParams.get("testCode");
+        fetch("/api/meta-event", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            eventName: 'InitiateCheckout',
+            eventName: "InitiateCheckout",
             eventID: checkoutEventId,
-            testCode: testCode,
-            fbp: fbp,
-            fbc: fbc,
-            externalId: externalId,
+            testCode,
+            fbp: freshFbp,
+            fbc: freshFbc,
+            externalId: freshExternalId,
             userData: {
-              firstName: name.split(' ')[0],
-              lastName: name.split(' ').slice(1).join(' '),
+              firstName: name.split(" ")[0],
+              lastName: name.split(" ").slice(1).join(" "),
               phone: phoneToSend,
             },
             customData: {
-              content_name: `Curso Presencial Numerologia - ${turmaConfig.label}`,
-              content_type: 'product',
-              value: 20.00,
-              currency: 'BRL'
-            }
-          })
-        }).catch(err => console.error("Erro CAPI InitiateCheckout:", err));
+              content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+              content_type: "product",
+              value: 20,
+              currency: "BRL",
+            },
+          }),
+        }).catch((err) => console.error("Erro CAPI InitiateCheckout:", err));
 
         window.location.href = turmaConfig.checkoutUrl;
       }, 1500);
@@ -225,29 +229,39 @@ export const EnrollmentForm = () => {
       console.error("Error:", error);
       toast({
         title: "Erro ao enviar dados",
-        description: "Por favor, tente novamente ou entre em contato via WhatsApp",
-        variant: "destructive"
+        description: "Tente novamente ou fale com a equipe pelo WhatsApp.",
+        variant: "destructive",
       });
       setIsLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto bg-card/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-2xl">
-      <div className="text-center mb-6">
-        <h3 className="md:text-3xl font-bold text-foreground mb-2 text-3xl">
-          SIM! Quero Meu Mapa Essencial!
+    <form
+      id="formulario-idm"
+      onSubmit={handleSubmit}
+      className="mx-auto w-full max-w-xl rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,hsla(var(--card)/0.96)_0%,hsla(var(--card)/0.88)_100%)] p-6 shadow-[0_24px_80px_rgba(3,8,20,0.45)] backdrop-blur-xl md:p-8"
+    >
+      <div className="mb-6 text-center">
+        <div className="mb-4 inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
+          IDM Pelo Brasil Numerologia
+        </div>
+        <h3 className="text-3xl font-bold text-foreground md:text-4xl">
+          Reserve sua vaga na Edicao Sao Paulo
         </h3>
-        <p className="text-muted-foreground text-lg">Garanta sua vaga agora e comece sua jornada de autodescoberta!</p>
+        <p className="mt-3 text-base text-muted-foreground md:text-lg">
+          Preencha seus dados, escolha a turma e siga para o checkout seguro da
+          experiencia presencial.
+        </p>
       </div>
 
       <div className="space-y-5">
         <div>
-          <Label htmlFor="name" className="text-foreground font-medium">
-            Nome Completo
+          <Label htmlFor="name" className="font-medium text-foreground">
+            Nome completo
           </Label>
           <div className="relative mt-2">
-            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
             <Input
               id="name"
               name="nome"
@@ -255,19 +269,19 @@ export const EnrollmentForm = () => {
               placeholder="Digite seu nome completo"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="pl-11 h-12 bg-background/50 border-border focus:border-primary"
-              required />
-            
+              className="h-12 border-border bg-background/50 pl-11 focus:border-primary"
+              required
+            />
           </div>
         </div>
 
         <div>
-          <Label htmlFor="whatsapp" className="text-foreground font-medium">
+          <Label htmlFor="whatsapp" className="font-medium text-foreground">
             WhatsApp
           </Label>
           <div className="relative mt-2">
-            <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center">
-              <Phone className="h-5 w-5 text-muted-foreground mr-2" />
+            <div className="absolute left-3 top-1/2 flex -translate-y-1/2 items-center">
+              <Phone className="mr-2 h-5 w-5 text-muted-foreground" />
               <span className="text-sm font-semibold text-muted-foreground">+55</span>
             </div>
             <Input
@@ -277,98 +291,106 @@ export const EnrollmentForm = () => {
               placeholder="(00) 00000-0000"
               value={whatsapp}
               onChange={handleWhatsAppChange}
-              className="pl-20 h-12 bg-background/50 border-border focus:border-primary"
-              required />
-            
+              className="h-12 border-border bg-background/50 pl-20 focus:border-primary"
+              required
+            />
           </div>
         </div>
 
-        {/* Seleção de Turma */}
         <div>
-          <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
+          <Label className="mb-3 flex items-center gap-2 font-medium text-foreground">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - 04 de Abril
+            Escolha sua turma na Edicao Sao Paulo
           </Label>
           <div className="space-y-3">
-            {(Object.keys(TURMA_CONFIG) as TurmaOption[]).filter(Boolean).map((turmaKey) => {
-              const turma = TURMA_CONFIG[turmaKey!];
-              const isSelected = selectedTurma === turmaKey;
-              const icon = turma.horario.includes("09:00") ? "☀️" :
-              turma.horario.includes("14:00") ? "🌅" : "🌙";
+            {(Object.keys(TURMA_CONFIG) as TurmaOption[])
+              .filter(Boolean)
+              .map((turmaKey) => {
+                const turma = TURMA_CONFIG[turmaKey!];
+                const isSelected = selectedTurma === turmaKey;
+                const icon = turma.horario.includes("09:00") ? "MANHA" : "TARDE";
 
-              return (
-                <button
-                  key={turmaKey}
-                  type="button"
-                  onClick={() => setSelectedTurma(turmaKey)}
-                  className={`w-full p-4 rounded-xl border-2 transition-all duration-300 ${
-                  isSelected ?
-                  "border-primary bg-primary/10 shadow-lg" :
-                  "border-border bg-background/50 hover:border-primary/50"}`
-                  }>
-                  
-                  <div className="flex items-start gap-3">
-                    <div className={`w-5 h-5 mt-1 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
-                    isSelected ? "border-primary bg-primary" : "border-muted-foreground"}`
-                    }>
-                      {isSelected &&
-                      <div className="w-2 h-2 rounded-full bg-primary-foreground" />
-                      }
-                    </div>
-                    <div className="text-left flex-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-lg">{icon}</span>
-                        <p className="font-semibold text-foreground">{turma.data}</p>
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
-                          {turma.diaSemana}
-                        </span>
+                return (
+                  <button
+                    key={turmaKey}
+                    type="button"
+                    onClick={() => setSelectedTurma(turmaKey)}
+                    className={`w-full rounded-xl border-2 p-4 text-left transition-all duration-300 ${
+                      isSelected
+                        ? "border-primary bg-primary/10 shadow-lg"
+                        : "border-border bg-background/50 hover:border-primary/50"
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <div
+                        className={`mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 ${
+                          isSelected
+                            ? "border-primary bg-primary"
+                            : "border-muted-foreground"
+                        }`}
+                      >
+                        {isSelected && (
+                          <div className="h-2 w-2 rounded-full bg-primary-foreground" />
+                        )}
                       </div>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        🕐 {turma.horario}
-                      </p>
-                      <p className={`text-xs mt-1 flex items-center gap-1 ${
-                      turma.enderecoDefinido ? "text-muted-foreground" : "text-amber-500"}`
-                      }>
-                        <MapPin className="h-3 w-3" />
-                        {turma.endereco}
-                      </p>
-                    </div>
-                  </div>
-                </button>);
 
-            })}
+                      <div className="flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-[11px] font-semibold tracking-[0.16em] text-primary">
+                            {icon}
+                          </span>
+                          <p className="font-semibold text-foreground">{turma.data}</p>
+                          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-xs text-primary">
+                            {turma.diaSemana}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          {turma.horario}
+                        </p>
+                        <p
+                          className={`mt-1 flex items-center gap-1 text-xs ${
+                            turma.enderecoDefinido
+                              ? "text-muted-foreground"
+                              : "text-amber-500"
+                          }`}
+                        >
+                          <MapPin className="h-3 w-3" />
+                          {turma.endereco}
+                        </p>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
           </div>
         </div>
 
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-5 px-8 rounded-full transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed text-lg uppercase tracking-wide shadow-lg relative overflow-hidden"
+          className="relative w-full overflow-hidden rounded-full bg-primary px-8 py-5 text-lg font-bold uppercase tracking-wide text-primary-foreground transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-70"
           style={{
-            animation: isLoading ? 'none' : 'pulse-button 2s ease-in-out infinite',
-            boxShadow: '0 8px 32px hsla(var(--primary) / 0.5), inset 0 -3px 0 rgba(0, 0, 0, 0.2), 0 0 0 3px hsla(var(--primary) / 0.2)'
-          }}>
-          
-          {isLoading ?
-          <>
-              <Loader2 className="mr-2 h-5 w-5 animate-spin inline" />
+            animation: isLoading ? "none" : "pulse-button 2s ease-in-out infinite",
+            boxShadow:
+              "0 10px 34px hsla(var(--primary) / 0.34), inset 0 -3px 0 rgba(0, 0, 0, 0.15), 0 0 0 3px hsla(var(--primary) / 0.12)",
+          }}
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 inline h-5 w-5 animate-spin" />
               Processando...
-            </> :
-
-          <>⚡ Últimas Vagas: Garanta Sua Transformação por R$20!</>
-          }
+            </>
+          ) : (
+            <>Garantir minha vaga por R$20</>
+          )}
         </button>
 
         <div className="flex flex-col gap-2 text-center text-sm text-muted-foreground">
-          <p className="flex items-center justify-center gap-1">
-            ⚡ Últimas vagas disponíveis!
-          </p>
-          <p className="flex items-center justify-center gap-1">
-            🔒 Seus dados estão 100% seguros
-          </p>
-          <p className="flex items-center justify-center gap-1">💳 Pagamento seguro via Mercado Pago</p>
+          <p>Vagas limitadas para esta edicao</p>
+          <p>Seus dados sao tratados com seguranca</p>
+          <p>Pagamento seguro no checkout oficial</p>
         </div>
       </div>
-    </form>);
-
+    </form>
+  );
 };

@@ -1,382 +1,396 @@
 import { useEffect } from "react";
+import { MapPin, CalendarDays, ShieldCheck, Sparkles } from "lucide-react";
 import { EnrollmentForm } from "@/components/EnrollmentForm";
 import { PillarCard } from "@/components/PillarCard";
 import { FAQItem } from "@/components/FAQItem";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StudentGallery } from "@/components/StudentGallery";
 import { Accordion } from "@/components/ui/accordion";
-import logoDespertaMente from "@/assets/despertamente-simbolo.png";
 import rodrygoMurari from "@/assets/rodrygo-murari.png";
 import { VideoPlayer } from "@/components/VideoPlayer";
+
+const pillars = [
+  {
+    icon: "01",
+    title: "Fundamentos com clareza",
+    subtitle: "Entenda a base da numerologia de forma pratica e aplicavel",
+    items: [
+      "Aprenda a leitura dos numeros centrais com uma metodologia simples e objetiva",
+      "Compreenda como interpretar padroes pessoais com mais seguranca",
+      "Construa uma base confiavel para continuar estudando e aplicando",
+    ],
+    footer:
+      "Um encontro pensado para iniciantes e para quem quer aprofundar com metodo.",
+  },
+  {
+    icon: "02",
+    title: "Leitura pessoal guiada",
+    subtitle: "Viva a experiencia com o seu proprio mapa como referencia",
+    items: [
+      "Veja como os numeros se conectam com identidade, trajetoria e tomada de decisao",
+      "Participe de uma experiencia presencial com apoio e conducoes praticas",
+      "Saia com mais clareza para aplicar o conhecimento no seu cotidiano",
+    ],
+    footer:
+      "A proposta e tornar o aprendizado relevante desde o primeiro contato.",
+  },
+  {
+    icon: "03",
+    title: "Aplicacao no mundo real",
+    subtitle: "Transforme teoria em repertorio para sua vida e sua atuacao",
+    items: [
+      "Aprenda como observar a numerologia em escolhas, ciclos e posicionamento pessoal",
+      "Tenha acesso a uma experiencia que combina conteudo, vivencia e direcionamento",
+      "Conecte autoconhecimento com desenvolvimento humano em um formato acessivel",
+    ],
+    footer: "Mais do que aula: uma edicao presencial oficial do IDM Pelo Brasil.",
+  },
+];
+
+const faqItems = [
+  {
+    value: "faq-1",
+    question: "Nunca estudei numerologia. Essa edicao e para mim?",
+    answer:
+      "Sim. A Edicao Sao Paulo foi pensada para quem quer comecar com base, contexto e aplicacao pratica. Voce nao precisa ter experiencia anterior.",
+  },
+  {
+    value: "faq-2",
+    question: "Isso e um curso ou uma experiencia presencial?",
+    answer:
+      "E uma experiencia presencial oficial do IDM Pelo Brasil, com conteudo estruturado, conducao ao vivo, material de apoio e espaco para aprendizado aplicado.",
+  },
+  {
+    value: "faq-3",
+    question: "Por que o investimento esta em R$20?",
+    answer:
+      "Porque essa edicao faz parte de um movimento de expansao do Instituto DespertaMente. O valor simbolico facilita o acesso e ajuda a garantir compromisso real com a vaga.",
+  },
+  {
+    value: "faq-4",
+    question: "Quando e onde acontece a Edicao Sao Paulo?",
+    answer:
+      "A experiencia acontece em Sao Paulo, em Pinheiros, com duas opcoes de horario no dia 04/04. Os detalhes completos sao enviados logo apos a inscricao.",
+  },
+  {
+    value: "faq-5",
+    question: "Recebo certificado e material?",
+    answer:
+      "Sim. A participacao inclui certificado e material de apoio para reforcar a experiencia presencial e facilitar a continuidade do aprendizado.",
+  },
+  {
+    value: "faq-6",
+    question: "E seguro fazer minha inscricao e pagamento?",
+    answer:
+      "Sim. A inscricao coleta apenas os dados necessarios para reserva da vaga e o pagamento e feito por checkout externo seguro.",
+  },
+];
+
 const Index = () => {
   useEffect(() => {
+    // Meta Pixel is loaded in index.html, PageView fires automatically.
+  }, []);
 
-
-    // Meta Pixel is loaded in index.html, PageView fires automatically
-  }, []);return <div className="min-h-screen relative">
-      {/* Geometric Background Numbers */}
-      <div className="geometric-numbers" aria-hidden="true">
-        <div className="number-float">1</div>
-        <div className="number-float">2</div>
-        <div className="number-float">3</div>
-        <div className="number-float">4</div>
-        <div className="number-float">5</div>
-        <div className="number-float">6</div>
-        <div className="number-float">7</div>
-        <div className="number-float">8</div>
-        <div className="number-float">9</div>
+  return (
+    <div className="relative min-h-screen overflow-x-hidden">
+      <div className="brand-orbs" aria-hidden="true">
+        <span className="brand-orb orb-one" />
+        <span className="brand-orb orb-two" />
+        <span className="brand-orb orb-three" />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative md:py-12 z-10 px-[15px] py-[5px]">
-        <div className="max-w-6xl mx-auto">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <img alt="Instituto DespertaMente" className="h-20 md:h-28 w-auto animate-fade-in" src="/lovable-uploads/80f81ce8-3e86-4c85-861e-48dfe700a84d.png" />
-          </div>
+      <section className="relative z-10 px-4 pb-8 pt-6 md:px-6 md:pb-12 md:pt-10">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <div className="space-y-8">
+            <div className="hero-shell">
+              <div className="hero-chip-row">
+                <span className="hero-chip">Instituto DespertaMente apresenta</span>
+                <span className="hero-chip hero-chip-muted">Edicao Sao Paulo</span>
+              </div>
 
-          {/* Headline */}
-          <div className="text-center mb-8 animate-fade-in">
-            <h1 className="hero-headline">
-              <span className="headline-line highlight text-center text-2xl md:text-4xl">Curso Essencial de Numerologia: Aprenda a Mapear Seu Destino em um Evento Presencial de 4 Horas em Pinheiros SP.</span>
-            </h1>
-            <h2 className="text-lg md:text-2xl text-muted-foreground mt-4 mb-2 font-semibold">
-              Com Rodrygo Murari: Saia com Seu Mapa Essencial Pronto, Certificado e Material de Apoio Exclusivo para Aplicar Imediatamente.
-            </h2>
-            
-            {/* Video de Vendas */}
-            <div className="w-full max-w-3xl mx-auto mb-6 -mx-[15px] md:mx-auto">
+              <div className="space-y-5">
+                <p className="eyebrow">IDM Pelo Brasil</p>
+                <h1 className="hero-title">
+                  Numerologia com a autoridade do IDM e a energia de uma
+                  experiencia presencial criada para converter interesse em
+                  decisao.
+                </h1>
+                <p className="hero-subtitle">
+                  Uma edicao oficial para quem quer viver a numerologia de forma
+                  pratica, elegante e acessivel, com encontro ao vivo,
+                  certificado, material de apoio e vagas limitadas em Sao
+                  Paulo.
+                </p>
+              </div>
+
+              <div className="hero-details-grid">
+                <div className="detail-card">
+                  <CalendarDays className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="detail-label">Data e formato</p>
+                    <p className="detail-value">04 de Abril - 2 turmas presenciais</p>
+                  </div>
+                </div>
+                <div className="detail-card">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="detail-label">Local</p>
+                    <p className="detail-value">Pinheiros - Sao Paulo</p>
+                  </div>
+                </div>
+                <div className="detail-card">
+                  <ShieldCheck className="h-5 w-5 text-primary" />
+                  <div>
+                    <p className="detail-label">Experiencia oficial</p>
+                    <p className="detail-value">
+                      Certificado + material + suporte
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="hero-proof">
+                <span>Experiencia presencial oficial</span>
+                <span>Vagas limitadas</span>
+                <span>Investimento de entrada: R$20</span>
+              </div>
+            </div>
+
+            <div className="hero-media-card">
+              <div className="media-copy">
+                <p className="media-kicker">Assista antes de reservar sua vaga</p>
+                <h2 className="media-title">
+                  Entenda o clima da edicao e o posicionamento do novo projeto
+                  presencial do IDM.
+                </h2>
+              </div>
               <VideoPlayer />
             </div>
-
-            <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
-              <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
-                <p className="text-primary font-bold text-xl mb-2">🔥 2 TURMAS DISPONÍVEIS — 04 de Abril em Pinheiros SP!</p>
-                <p className="font-semibold text-foreground text-base">Vagas LIMITADAS! Escolha Manhã ou Tarde e garanta sua vaga agora!</p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 text-sm md:text-base mt-4">
-                <span className="flex items-center gap-1">📜 Certificado de Conclusão</span>
-                <span className="flex items-center gap-1">📖 Material de Apoio Exclusivo</span>
-                <span className="flex items-center gap-1">👥 Vagas Limitadas</span>
-              </div>
-              <p className="text-2xl md:text-3xl font-bold text-primary mt-4">
-                Garanta seu Ingresso por APENAS R$20 Reais!    
-              </p>
-            </div>
           </div>
 
-          {/* Form */}
-          <div className="animate-fade-in">
+          <div className="lg:sticky lg:top-8">
             <EnrollmentForm />
           </div>
         </div>
       </section>
 
-      {/* Student Gallery - After Form */}
+      <section className="relative z-10 px-4 py-3 md:px-6">
+        <div className="section-container section-highlight">
+          <div className="mx-auto max-w-6xl">
+            <div className="section-heading">
+              <p className="section-kicker">Posicionamento da edicao</p>
+              <h2 className="section-title">
+                Uma landing de alta conversao com cara de marca nacional.
+              </h2>
+              <p className="section-copy">
+                O IDM Pelo Brasil nasce para transformar os presenciais do
+                instituto em um produto replicavel, forte e reconhecivel.
+                Numerologia e a trilha desta edicao. Sao Paulo e o ponto de
+                partida.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="mini-panel">
+                <p className="mini-panel-label">Marca principal</p>
+                <p className="mini-panel-value">IDM Pelo Brasil</p>
+              </div>
+              <div className="mini-panel">
+                <p className="mini-panel-label">Tema da experiencia</p>
+                <p className="mini-panel-value">Numerologia</p>
+              </div>
+              <div className="mini-panel">
+                <p className="mini-panel-label">Recorte local</p>
+                <p className="mini-panel-value">Edicao Sao Paulo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <StudentGallery />
 
-      {/* What You'll Learn Section */}
-      <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
-        <div className="section-container section-highlight">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-            🎓 O QUE VOCÊ VAI DESCOBRIR NESTE CURSO PRESENCIAL
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 text-lg">
-            Os 3 Pilares do Curso — Conteúdo prático que você aplica no mesmo dia
-          </p>
+      <section className="relative z-10 px-4 py-3 md:px-6">
+        <div className="section-container">
+          <div className="section-heading">
+            <p className="section-kicker">O que essa experiencia entrega</p>
+            <h2 className="section-title">
+              Conteudo, presenca e aplicacao em uma estrutura mais premium.
+            </h2>
+            <p className="section-copy">
+              Mantemos o foco em conversao, mas com um visual mais institucional
+              e um discurso mais consistente para sustentar futuras edicoes
+              pelo Brasil.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <PillarCard icon="🧠"
-          title="Domine os Fundamentos"
-          subtitle="Calcule e Interprete Seus Números com Precisão"
-          items={[
-          "Cálculo correto do Número de Destino — Entenda a rota da sua vida e tome decisões mais assertivas",
-          "Interpretação completa dos números de 1 a 9 — Descubra o significado por trás de cada número",
-          "Estrutura base da numerologia pitagórica — Aprenda o sistema milenar usado pelos maiores mestres",
-          "Técnicas práticas de cálculo — Domine o método passo a passo e aplique imediatamente"]
-          }
-          footer="Aprenda o método exato usado por profissionais" />
-          
-
-            <PillarCard
-            icon="❤️"
-            title="Seu Mapa Pessoal"
-            subtitle="Desvende Sua Essência e Potencial Único"
-            items={[
-            "Número da Alma — Descubra sua essência interior e o que realmente te motiva",
-            "Número de Expressão — Entenda como você se manifesta e é percebido pelo mundo",
-            "Leitura do Mapa Numerológico completo — Saia do curso com seu mapa pronto em mãos",
-            "Padrões de comportamento — Compreenda por que você age de determinada forma"]
-            }
-            footer="Entenda sua personalidade de forma profunda" />
-          
-
-            <PillarCard
-            icon="👁️"
-            title="Numerologia na Prática"
-            subtitle="Transforme Teoria em Resultados Concretos para o Dia a Dia"
-            items={[
-            "Numerologia Residencial — Harmonize a energia da sua casa e melhore o ambiente",
-            "Energia da Assinatura e Nome Profissional — Potencialize sua marca pessoal",
-            "Harmonizações simples para o dia a dia — Aplique ajustes rápidos com resultados reais",
-            "Numerologia em decisões importantes — Use os números como guia estratégico"]
-            }
-            footer="Ferramentas práticas que você usa IMEDIATAMENTE" />
-          
+          <div className="grid gap-6 md:grid-cols-3">
+            {pillars.map((pillar) => (
+              <PillarCard key={pillar.title} {...pillar} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <TestimonialsSection />
 
-      {/* About Instituto */}
-      <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
+      <section className="relative z-10 px-4 py-3 md:px-6">
         <div className="section-container">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex justify-center mb-8">
-              <img alt="Instituto DespertaMente" className="h-20 md:h-28 w-auto" src="/lovable-uploads/80f81ce8-3e86-4c85-861e-48dfe700a84d.png" />
+          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+            <div className="profile-card">
+              <img
+                src={rodrygoMurari}
+                alt="Rodrygo Murari"
+                className="profile-image"
+              />
+              <div className="space-y-2 text-center">
+                <p className="profile-name">Rodrygo Murari</p>
+                <p className="profile-role">Fundador do Instituto DespertaMente</p>
+              </div>
             </div>
-            <h2 className="md:text-4xl font-bold text-foreground mb-6 text-2xl">🏛️ QUEM ESTÁ POR TRÁS DESTE CURSO?</h2>
-            <div className="text-lg text-muted-foreground space-y-4 leading-relaxed">
-              <p>
-                O Instituto DespertaMente é referência em desenvolvimento humano, integrando
-                Psicanálise, PNL, Hipnose e Numerologia Pitagórica Sistêmica.
+
+            <div className="space-y-5">
+              <p className="section-kicker">Quem assina a experiencia</p>
+              <h2 className="section-title text-left">
+                A autoridade do IDM entra em cena para dar consistencia ao novo
+                produto presencial.
+              </h2>
+              <p className="section-copy text-left">
+                Rodrygo Murari conduz a trilha de numerologia com repertorio em
+                desenvolvimento humano, vivencias, treinamentos e atendimentos.
+                O objetivo aqui nao e apenas ensinar um conceito: e construir
+                uma experiencia que legitime a marca IDM Pelo Brasil e gere
+                desejo real pelas proximas edicoes.
               </p>
-              <p>
-                Nossa missão é clara: tornar o autoconhecimento acessível através de experiências
-                transformadoras, vivências profundas e formações de altíssima qualidade.
-              </p>
-              <p className="font-semibold text-primary text-xl price-shine">
-                Não é apenas teoria. É transformação real na vida de centenas de alunos.
-              </p>
+              <div className="hero-proof justify-start">
+                <span>Metodo proprietario</span>
+                <span>Experiencia presencial guiada</span>
+                <span>Marca pronta para escalar</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Teacher Section */}
-      <section className="md:py-8 relative z-10 px-[15px] py-0">
-        <div className="section-container">
-          <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-            👨‍🏫 CONHEÇA SEU PROFESSOR
-          </h2>
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div className="flex-shrink-0">
-              <img src={rodrygoMurari} alt="Rodrygo Murari" className="w-64 h-64 md:w-80 md:h-80 rounded-2xl object-cover border-4 border-primary/30 shadow-2xl" />
-              <div className="text-center mt-4">
-                <p className="text-2xl font-bold text-foreground">Rodrygo Murari</p>
-                <p className="text-primary font-semibold">Fundador e Professor Especialista</p>
-              </div>
-            </div>
-            <div className="text-muted-foreground space-y-4 leading-relaxed">
-              <p className="text-center">
-                Com mais de <span className="text-primary font-bold">5.000 HORAS</span> de
-                atendimentos somados em Setting Terapêutico, Cursos, Treinamentos e Mentorias,
-                Rodrygo Murari é especialista em Metafísica Comportamental e PNL SISTÊMICA.
-              </p>
-              <p className="text-center">Seu propósito? Levar uma "Numerologia Descomplicada"</p>
-              <p className="text-center">Sua abordagem revolucionária da Numerologia Sistêmica tem transformado a vida de centenas de pessoas no Brasil e na Europa.</p>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <span className="flex items-center gap-2 text-primary">
-                  📍 Experiência comprovada
-                </span>
-                <span className="flex items-center gap-2 text-primary">
-                  🎯 Metodologia exclusiva
-                </span>
-                <span className="flex items-center gap-2 text-primary">
-                  ❤️ Comprometimento com resultados reais
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      {/* Why R$20 Section */}
-      <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
+      <section className="relative z-10 px-4 py-3 md:px-6">
         <div className="section-container section-highlight">
-          <div className="max-w-4xl mx-auto">
-          <h2 className="md:text-4xl font-bold text-center text-foreground mb-8 text-2xl">
-            🤔 POR QUE UM CURSO PRESENCIAL TÃO BARATO?
-          </h2>
-          <div className="text-lg text-muted-foreground space-y-4 leading-relaxed mb-8">
-            <p className="text-center">
-              Você deve estar se perguntando: "Como um curso presencial com certificado pode custar
-               apenas R$ 20?"
+          <div className="mx-auto max-w-5xl text-center">
+            <p className="section-kicker">Oferta de entrada</p>
+            <h2 className="section-title">
+              Uma experiencia com valor percebido alto e barreira de entrada
+              baixa.
+            </h2>
+            <p className="section-copy">
+              O valor simbolico de R$20 preserva a urgencia, melhora o
+              compromisso com a inscricao e permite apresentar a nova fase do
+              produto com cara de oportunidade de lancamento.
             </p>
-            <p className="font-semibold text-primary text-xl text-center">
-              A resposta é simples: nossa missão é DEMOCRATIZAR o autoconhecimento.
-            </p>
-            <p className="text-center font-semibold text-foreground">
-              Este não é um curso online genérico. É uma experiência PRESENCIAL, com a profundidade e a interação que só o contato direto pode oferecer.
-            </p>
-            <p className="text-center">
-              Queremos que VOCÊ tenha acesso a ferramentas poderosas de transformação,
-              independente da sua situação financeira.
-            </p>
-            <p className="text-center">
-              O investimento simbólico de R$ 20 garante seu compromisso e nossa capacidade de
-               organizar o melhor evento possível.
-            </p>
-            <p className="text-center text-primary font-bold">
-              ⚠️ Aproveite: a próxima turma será pelo valor integral. Esta é uma oportunidade única!
-            </p>
-          </div>
 
-            <div className="bg-card border-2 border-primary rounded-2xl p-8 text-center">
-              <div className="flex justify-center gap-8 mb-6 flex-wrap">
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Valor real do curso:</p>
-                  <p className="text-3xl font-bold line-through text-muted-foreground">R$ 497</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Seu investimento hoje:</p>
-                  <p className="text-4xl font-bold price-shine">R$ 20</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Economia:</p>
-                  <p className="text-3xl font-bold text-primary">R$ 477</p>
-                </div>
+            <div className="pricing-shell">
+              <div className="pricing-card">
+                <p className="pricing-label">Valor da experiencia</p>
+                <p className="pricing-strike">R$497</p>
               </div>
-              <p className="text-2xl font-bold price-shine">Sim, você está economizando 96%!</p>
+              <div className="pricing-card pricing-card-featured">
+                <p className="pricing-label">Edicao Sao Paulo</p>
+                <p className="pricing-main">R$20</p>
+              </div>
+              <div className="pricing-card">
+                <p className="pricing-label">Incluso</p>
+                <p className="pricing-side">Certificado + material</p>
+              </div>
             </div>
 
-          <div className="mt-8 bg-card/50 border border-primary/30 rounded-xl p-6">
-            <h3 className="text-2xl font-bold text-center text-primary mb-6">
-              📦 O QUE ESTÁ INCLUSO:
-            </h3>
-            <div className="grid md:grid-cols-2 gap-3 text-muted-foreground">
-              {["✅ Curso Presencial Completo (4 horas)", "✅ Certificado de Conclusão Reconhecido", "✅ Material de Apoio Exclusivo", "✅ Seu Mapa Essencial Pronto", "✅ Café e networking", "✅ Suporte durante o evento", "✅ Acesso ao grupo exclusivo de alunos", "✅ Bônus surpresa no dia"].map((item, index) => <p key={index} className="flex items-center gap-2">
-                  {item}
-                </p>)}
-            </div>
-              <p className="text-center text-xl font-bold price-shine mt-6">TUDO ISSO POR R$ 20!</p>
+            <div className="grid gap-3 pt-8 text-left md:grid-cols-2">
+              {[
+                "Encontro presencial oficial do IDM Pelo Brasil",
+                "Trilha de Numerologia com aplicacao pratica",
+                "Material de apoio para acompanhar a vivencia",
+                "Certificado de participacao",
+                "Ambiente de networking e troca",
+                "Direcionamento para continuidade no ecossistema IDM",
+              ].map((item) => (
+                <div key={item} className="inclusion-row">
+                  <Sparkles className="h-4 w-4 text-primary" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-6 md:py-8 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            ⏰ ÚLTIMAS VAGAS DISPONÍVEIS!
+      <section className="relative z-10 px-4 py-8 md:px-6">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="section-kicker">Fechamento</p>
+          <h2 className="section-title">
+            Se Sao Paulo e a primeira edicao, sua vaga precisa entrar agora.
           </h2>
-          <p className="text-xl text-primary font-semibold mb-8">
-            Não Perca Esta Oportunidade Única — Próxima Turma Pelo Valor Integral
+          <p className="section-copy">
+            Essa pagina foi redesenhada para vender com mais sofisticacao, mais
+            marca e mais autoridade. O proximo passo continua simples:
+            preencher, escolher a turma e ir para o checkout.
           </p>
-          <div className="text-lg text-muted-foreground space-y-4 mb-8 leading-relaxed">
-            <p>Este é um evento presencial com vagas LIMITADAS.</p>
-            <p>
-              Quando acabarem as vagas, não haverá mais oportunidade de participar nesta turma por
-              esse valor promocional.
-            </p>
-            <p>A próxima turma (se houver) será pelo valor integral de R$ 497.</p>
-            <div className="py-6 space-y-2">
-              <p className="font-semibold text-primary text-xl">
-                👉 Você está a APENAS 1 CLIQUE de transformar sua vida
-              </p>
-              <p className="font-semibold text-primary text-xl">
-                👉 São apenas R$ 20 - menos que um almoço
-              </p>
-              <p className="font-semibold text-primary text-xl">
-                👉 Risco ZERO e retorno INFINITO
-              </p>
-            </div>
-            <p className="text-xl">
-              A escolha é sua: continuar sem respostas ou descobrir seu verdadeiro propósito.
-            </p>
-          </div>
 
-          <a href="#" onClick={(e) => {e.preventDefault();
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-        }}>
-            <button className="w-full max-w-md mx-auto h-auto py-4 px-6 text-lg md:text-xl font-bold bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-2xl hover:shadow-primary/50 transition-all duration-300 hover:scale-105">
-              🚀 Últimas Vagas: Garanta Sua Transformação Presencial por R$20!
-            </button>
+          <a
+            href="#formulario-idm"
+            onClick={(event) => {
+              event.preventDefault();
+              const form = document.getElementById("formulario-idm");
+              form?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className="inline-flex min-h-14 items-center justify-center rounded-full bg-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-[0_20px_60px_hsla(var(--primary)/0.28)] transition-transform duration-300 hover:-translate-y-1"
+          >
+            Reservar minha vaga na Edicao Sao Paulo
           </a>
-
-          <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-muted-foreground">
-            <p className="flex items-center gap-2">✓ + de 500 alunos já transformaram suas vidas</p>
-            <p className="flex items-center gap-2">✓ 98% de taxa de satisfação</p>
-            <p className="flex items-center gap-2">
-              ✓ Metodologia comprovada há mais de 10 anos
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-6 md:py-8 px-4 relative z-10">
+      <section className="relative z-10 px-4 py-3 md:px-6">
         <div className="section-container">
-          <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-4">
-            ❓ PERGUNTAS FREQUENTES
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 text-xl">
-            Tire Suas Dúvidas Antes de Garantir Sua Vaga
-          </p>
+          <div className="mx-auto max-w-4xl">
+            <div className="section-heading">
+              <p className="section-kicker">Perguntas frequentes</p>
+              <h2 className="section-title">
+                Tire as ultimas duvidas antes de entrar.
+              </h2>
+              <p className="section-copy">
+                O objetivo e deixar a decisao simples, segura e alinhada com a
+                nova proposta da marca.
+              </p>
+            </div>
 
-          <Accordion type="single" collapsible className="space-y-4">
-            <FAQItem value="faq-1" question="Nunca estudei numerologia. Este curso é para mim?" answer="SIM! Este curso foi desenvolvido especialmente para iniciantes. Você não precisa de conhecimento prévio. Vamos começar do zero e você sairá do evento já sabendo calcular e interpretar seu próprio mapa numerológico." />
-            <FAQItem value="faq-2" question="Por que apenas R$ 20? Qual é a pegadinha?" answer="Não há pegadinha! Nossa missão é democratizar o autoconhecimento. O valor simbólico garante seu compromisso com o curso e cobre custos básicos de material. Queremos que o máximo de pessoas possam ter acesso a essa transformação." />
-            <FAQItem value="faq-3" question="O certificado é reconhecido?" answer="Sim! Você receberá um certificado de conclusão emitido pelo Instituto DespertaMente, válido como comprovação de participação e aprendizado em Numerologia Pitagórica Sistêmica." />
-            <FAQItem value="faq-4" question="Quando e onde será o curso?" answer="O curso será realizado no dia 04/04 (Sábado), com duas turmas: Manhã (09h às 12h) e Tarde (14h às 17h), presencial em Pinheiros, São Paulo — Rua Oscar Freire, 2617 cj 408. As informações detalhadas serão enviadas imediatamente após sua inscrição, por WhatsApp e email." />
-            <FAQItem value="faq-5" question="E se eu não puder comparecer depois de pagar?" answer="Entre em contato conosco com 48h de antecedência. Avaliaremos a possibilidade de transferir sua vaga para a próxima turma ou realizar o reembolso integral." />
-            <FAQItem value="faq-6" question="Preciso levar algum material?" answer="Não! Todo material didático está incluso. Você só precisa levar você mesmo, com mente aberta e vontade de aprender. Recomendamos trazer uma garrafa de água e um caderno extra se quiser fazer anotações pessoais." />
-            <FAQItem value="faq-7" question="Vou conseguir fazer cálculos numerológicos depois do curso?" answer="COM CERTEZA! O curso é 100% prático. Você vai calcular seu próprio mapa durante o evento e sairá de lá apto a calcular para outras pessoas. É aprender fazendo!" />
-            <FAQItem value="faq-8" question="O pagamento é seguro?" answer="Absolutamente! Utilizamos a plataforma Cakto, uma das mais seguras do Brasil. Seus dados estão 100% protegidos e você receberá confirmação imediata do pagamento." />
-          </Accordion>
-        </div>
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqItems.map((item) => (
+                <FAQItem key={item.value} {...item} />
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-border relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <div className="flex justify-center mb-6">
-            <img alt="Instituto DespertaMente" className="h-16 w-auto" src="/lovable-uploads/b4dec95d-4969-4772-a141-d5494b0b2efc.png" />
-          </div>
-          <p className="text-xl font-semibold text-foreground">Instituto DespertaMente</p>
-          <p className="text-muted-foreground">Transformando vidas através do autoconhecimento</p>
-
-          <div className="space-y-2 text-muted-foreground">
-            <p className="flex items-center justify-center gap-2">
-              📧 contato@institutodespertamente.com.br
+      <footer className="relative z-10 border-t border-border/80 px-4 py-10 md:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-5 text-center md:flex-row md:items-center md:justify-between md:text-left">
+          <div className="space-y-2">
+            <p className="eyebrow text-sm">IDM Pelo Brasil</p>
+            <p className="text-xl font-semibold text-foreground">
+              Instituto DespertaMente
             </p>
-            <p className="flex items-center justify-center gap-2">📱 WhatsApp: (11) 97537-9719</p>
-            <p className="flex items-center justify-center gap-2">
-              📍 Av. Presidente Wilson 165 - Centro  
+            <p className="text-sm text-muted-foreground">
+              Uma plataforma presencial para edicoes de Numerologia,
+              Psicanalise e PNL em diferentes cidades do Brasil.
             </p>
           </div>
 
-          <div className="pt-6">
-            <p className="text-muted-foreground mb-4">Siga-nos nas redes sociais:</p>
-            <div className="flex justify-center gap-6">
-              <a href="https://www.instagram.com/institutodespertamente/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
-                Instagram
-              </a>
-              <a href="https://www.facebook.com/institutodespertamente" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
-                Facebook
-              </a>
-              <a href="https://www.youtube.com/@institutodespertamente" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80 transition-colors">
-                YouTube
-              </a>
-            </div>
-          </div>
-
-          <div className="pt-6 border-t border-border text-sm text-muted-foreground">
-            <p>© 2026 Instituto DespertaMente. Todos os direitos reservados.</p>
+          <div className="space-y-1 text-sm text-muted-foreground">
+            <p>Contato: contato@institutodespertamente.com.br</p>
+            <p>WhatsApp: (11) 97537-9719</p>
             <p>CNPJ: 55.184.481/0001-24</p>
           </div>
         </div>
       </footer>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
