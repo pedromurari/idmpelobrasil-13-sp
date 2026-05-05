@@ -16,7 +16,7 @@ const TURMA_CONFIG = {
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
     enderecoDefinido: true,
     sheetUrl:
-      "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
+      "https://script.google.com/macros/s/AKfycbxhudvFlfP8_oR0263c-50Qo73T3JA9U07TkjL4mQxosp5Dga-9zpXSRqJY5kcTvIyG/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP",
   },
   "16mai_tarde": {
@@ -27,7 +27,7 @@ const TURMA_CONFIG = {
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
     enderecoDefinido: true,
     sheetUrl:
-      "https://script.google.com/macros/s/AKfycbzDYLQ02_aInO_3EUi9WkT_W8IjfB7cWz1NW-p0DnoajH0kT9MAS_PwgRYjr1cZfpZSPw/exec",
+      "https://script.google.com/macros/s/AKfycbxhudvFlfP8_oR0263c-50Qo73T3JA9U07TkjL4mQxosp5Dga-9zpXSRqJY5kcTvIyG/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ",
   },
 };
