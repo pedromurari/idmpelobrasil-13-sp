@@ -17,7 +17,7 @@ const TURMA_CONFIG = {
     enderecoDefinido: true,
     sheetUrl:
       "https://script.google.com/macros/s/AKfycbxhudvFlfP8_oR0263c-50Qo73T3JA9U07TkjL4mQxosp5Dga-9zpXSRqJY5kcTvIyG/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SD141",
   },
   "16mai_tarde": {
     label: "16/05 - Tarde",
@@ -28,7 +28,7 @@ const TURMA_CONFIG = {
     enderecoDefinido: true,
     sheetUrl:
       "https://script.google.com/macros/s/AKfycbxhudvFlfP8_oR0263c-50Qo73T3JA9U07TkjL4mQxosp5Dga-9zpXSRqJY5kcTvIyG/exec",
-    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDQ",
+    checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SD142",
   },
 };
 
