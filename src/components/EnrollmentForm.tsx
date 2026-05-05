@@ -176,6 +176,18 @@ export const EnrollmentForm = () => {
         const checkoutEventId = `${eventId}_checkout`;
         const { externalId: freshExternalId, fbp: freshFbp, fbc: freshFbc } =
           MetaIdentity.getIdentity();
+        const checkoutUrl = new URL(turmaConfig.checkoutUrl);
+        [
+          "utm_source",
+          "utm_medium",
+          "utm_campaign",
+          "utm_content",
+          "utm_term",
+          "testCode",
+        ].forEach((key) => {
+          const value = urlParams.get(key);
+          if (value) checkoutUrl.searchParams.set(key, value);
+        });
 
         if (typeof window !== "undefined" && (window as any).fbq) {
           (window as any).fbq(
@@ -219,7 +231,7 @@ export const EnrollmentForm = () => {
           }),
         }).catch((err) => console.error("Erro CAPI InitiateCheckout:", err));
 
-        window.location.href = turmaConfig.checkoutUrl;
+        window.location.href = checkoutUrl.toString();
       }, 1500);
     } catch (error) {
       console.error("Error:", error);
