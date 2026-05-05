@@ -206,14 +206,14 @@ export const EnrollmentForm = () => {
           );
         }
 
-        const testCode = urlParams.get("testCode");
+        const checkoutTestCode = urlParams.get("testCode");
         fetch("/api/meta-event", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             eventName: "InitiateCheckout",
             eventID: checkoutEventId,
-            testCode,
+            testCode: checkoutTestCode,
             fbp: freshFbp,
             fbc: freshFbc,
             externalId: freshExternalId,
