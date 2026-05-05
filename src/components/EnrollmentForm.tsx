@@ -109,8 +109,9 @@ export const EnrollmentForm = () => {
         utm_term: urlParams.get("utm_term") || "",
       });
 
-      await fetch(`${turmaConfig.sheetUrl}?${sheetParams.toString()}`, {
+      await fetch(turmaConfig.sheetUrl, {
         method: "POST",
+        body: sheetParams,
         mode: "no-cors",
       });
 
