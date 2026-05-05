@@ -5,12 +5,12 @@ import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 import { MetaIdentity } from "../utils/meta-identity";
 
-type TurmaOption = "04abr_manha" | "04abr_tarde" | null;
+type TurmaOption = "16mai_manha" | "16mai_tarde" | null;
 
 const TURMA_CONFIG = {
-  "04abr_manha": {
-    label: "04/04 - Manha",
-    data: "04 de Abril",
+  "16mai_manha": {
+    label: "16/05 - Manha",
+    data: "16 de Maio",
     diaSemana: "Sabado",
     horario: "09:00 as 13:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
@@ -19,9 +19,9 @@ const TURMA_CONFIG = {
       "https://script.google.com/macros/s/AKfycbwkXhXPn9PqGg1-YbseGjWwtVPFAA97OZPUqTHancxi_etdmU6SY33dGhp-Zp73qxBbsQ/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SCVDP",
   },
-  "04abr_tarde": {
-    label: "04/04 - Tarde",
-    data: "04 de Abril",
+  "16mai_tarde": {
+    label: "16/05 - Tarde",
+    data: "16 de Maio",
     diaSemana: "Sabado",
     horario: "14:00 as 18:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
@@ -286,7 +286,7 @@ export const EnrollmentForm = () => {
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - 04 de Abril
+            Escolha sua turma - 16 de Maio
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[])
