@@ -457,7 +457,7 @@ const Index = () => {
               WhatsApp: (11) 97537-9719
             </p>
             <p className="flex items-center justify-center gap-2">
-              Av. Presidente Wilson 165 - Centro
+              Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo
             </p>
           </div>
 

@@ -100,7 +100,10 @@ export const EnrollmentForm = () => {
       const formData = new FormData();
       formData.append("name", name.trim());
       formData.append("phone", phoneToSend);
-      formData.append("turma", turmaConfig.label);
+      formData.append(
+        "turma",
+        selectedTurma === "16mai_manha" ? "manha" : "tarde"
+      );
 
       await fetch(turmaConfig.sheetUrl, {
         method: "POST",
