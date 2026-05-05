@@ -97,17 +97,20 @@ export const EnrollmentForm = () => {
       cleanPhone = cleanPhone.slice(0, 11);
       const phoneToSend = `55${cleanPhone}`;
 
-      const formData = new FormData();
-      formData.append("name", name.trim());
-      formData.append("phone", phoneToSend);
-      formData.append(
-        "turma",
-        selectedTurma === "16mai_manha" ? "manha" : "tarde"
-      );
+      const urlParams = new URLSearchParams(window.location.search);
+      const sheetParams = new URLSearchParams({
+        name: name.trim(),
+        phone: phoneToSend,
+        turma: selectedTurma === "16mai_manha" ? "manha" : "tarde",
+        utm_source: urlParams.get("utm_source") || "",
+        utm_medium: urlParams.get("utm_medium") || "",
+        utm_campaign: urlParams.get("utm_campaign") || "",
+        utm_content: urlParams.get("utm_content") || "",
+        utm_term: urlParams.get("utm_term") || "",
+      });
 
-      await fetch(turmaConfig.sheetUrl, {
+      await fetch(`${turmaConfig.sheetUrl}?${sheetParams.toString()}`, {
         method: "POST",
-        body: formData,
         mode: "no-cors",
       });
 
@@ -136,7 +139,6 @@ export const EnrollmentForm = () => {
       }
 
       try {
-        const urlParams = new URLSearchParams(window.location.search);
         const testCode = urlParams.get("testCode");
 
         await fetch("/api/meta-event", {
@@ -191,7 +193,6 @@ export const EnrollmentForm = () => {
           );
         }
 
-        const urlParams = new URLSearchParams(window.location.search);
         const testCode = urlParams.get("testCode");
         fetch("/api/meta-event", {
           method: "POST",
