@@ -41,51 +41,44 @@ export const EnrollmentForm = () => {
 
   const formatWhatsApp = (value: string) => {
     const numbers = value.replace(/\D/g, "");
-    if (numbers.length <= 2) {
-      return numbers;
-    }
-    if (numbers.length <= 6) {
-      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
-    }
-    if (numbers.length <= 10) {
+    if (numbers.length <= 2) return numbers;
+    if (numbers.length <= 6) return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+    if (numbers.length <= 10)
       return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
-    }
     return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
   };
 
   const handleWhatsAppChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setWhatsapp(formatWhatsApp(e.target.value));
+    const formatted = formatWhatsApp(e.target.value);
+    setWhatsapp(formatted);
   };
 
   const validateForm = () => {
     if (name.trim().length < 3) {
       toast({
         title: "Nome invalido",
-        description: "Digite seu nome completo com pelo menos 3 caracteres.",
+        description: "Por favor, digite seu nome completo (minimo 3 caracteres)",
         variant: "destructive",
       });
       return false;
     }
-
     const numbers = whatsapp.replace(/\D/g, "");
     if (numbers.length < 10 || numbers.length > 11) {
       toast({
         title: "WhatsApp invalido",
-        description: "Digite um numero valido com DDD.",
+        description: "Por favor, digite um numero valido com DDD",
         variant: "destructive",
       });
       return false;
     }
-
     if (!selectedTurma) {
       toast({
         title: "Selecione uma turma",
-        description: "Escolha o horario que deseja reservar na Edicao Sao Paulo.",
+        description: "Por favor, escolha a turma que deseja participar",
         variant: "destructive",
       });
       return false;
     }
-
     return true;
   };
 
@@ -115,7 +108,7 @@ export const EnrollmentForm = () => {
         mode: "no-cors",
       });
 
-      const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+      const eventId = `npa_lp_sp_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`;
       const { externalId, fbp, fbc } = MetaIdentity.getIdentity();
 
       MetaIdentity.saveUserData({
@@ -129,7 +122,7 @@ export const EnrollmentForm = () => {
           "track",
           "Lead",
           {
-            content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+            content_name: `Inscricao - ${turmaConfig.label}`,
             status: "pending",
           },
           {
@@ -145,9 +138,7 @@ export const EnrollmentForm = () => {
 
         await fetch("/api/meta-event", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             eventName: "Lead",
             eventID: eventId,
@@ -161,7 +152,7 @@ export const EnrollmentForm = () => {
               lastName: name.split(" ").slice(1).join(" "),
             },
             customData: {
-              content_name: `IDM Pelo Brasil Numerologia - ${turmaConfig.label}`,
+              content_name: `Inscricao - ${turmaConfig.label}`,
               status: "pending",
             },
           }),
@@ -171,8 +162,8 @@ export const EnrollmentForm = () => {
       }
 
       toast({
-        title: "Reserva iniciada com sucesso",
-        description: "Redirecionando voce para o pagamento da sua vaga.",
+        title: "Dados salvos com sucesso!",
+        description: "Redirecionando para o pagamento...",
       });
 
       setTimeout(() => {
@@ -229,7 +220,7 @@ export const EnrollmentForm = () => {
       console.error("Error:", error);
       toast({
         title: "Erro ao enviar dados",
-        description: "Tente novamente ou fale com a equipe pelo WhatsApp.",
+        description: "Por favor, tente novamente ou entre em contato via WhatsApp",
         variant: "destructive",
       });
       setIsLoading(false);
@@ -238,30 +229,25 @@ export const EnrollmentForm = () => {
 
   return (
     <form
-      id="formulario-idm"
       onSubmit={handleSubmit}
-      className="mx-auto w-full max-w-xl rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,hsla(var(--card)/0.96)_0%,hsla(var(--card)/0.88)_100%)] p-6 shadow-[0_24px_80px_rgba(3,8,20,0.45)] backdrop-blur-xl md:p-8"
+      className="w-full max-w-md mx-auto bg-card/50 backdrop-blur-sm border-2 border-primary/30 rounded-2xl p-6 md:p-8 shadow-2xl"
     >
-      <div className="mb-6 text-center">
-        <div className="mb-4 inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-primary">
-          IDM Pelo Brasil Numerologia
-        </div>
-        <h3 className="text-3xl font-bold text-foreground md:text-4xl">
-          Reserve sua vaga na Edicao Sao Paulo
+      <div className="text-center mb-6">
+        <h3 className="md:text-3xl font-bold text-foreground mb-2 text-3xl">
+          SIM! Quero minha vaga no IDM Pelo Brasil!
         </h3>
-        <p className="mt-3 text-base text-muted-foreground md:text-lg">
-          Preencha seus dados, escolha a turma e siga para o checkout seguro da
-          experiencia presencial.
+        <p className="text-muted-foreground text-lg">
+          Garanta sua vaga agora e comece sua jornada de autodescoberta!
         </p>
       </div>
 
       <div className="space-y-5">
         <div>
-          <Label htmlFor="name" className="font-medium text-foreground">
-            Nome completo
+          <Label htmlFor="name" className="text-foreground font-medium">
+            Nome Completo
           </Label>
           <div className="relative mt-2">
-            <User className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               id="name"
               name="nome"
@@ -269,19 +255,19 @@ export const EnrollmentForm = () => {
               placeholder="Digite seu nome completo"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="h-12 border-border bg-background/50 pl-11 focus:border-primary"
+              className="pl-11 h-12 bg-background/50 border-border focus:border-primary"
               required
             />
           </div>
         </div>
 
         <div>
-          <Label htmlFor="whatsapp" className="font-medium text-foreground">
+          <Label htmlFor="whatsapp" className="text-foreground font-medium">
             WhatsApp
           </Label>
           <div className="relative mt-2">
-            <div className="absolute left-3 top-1/2 flex -translate-y-1/2 items-center">
-              <Phone className="mr-2 h-5 w-5 text-muted-foreground" />
+            <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center">
+              <Phone className="h-5 w-5 text-muted-foreground mr-2" />
               <span className="text-sm font-semibold text-muted-foreground">+55</span>
             </div>
             <Input
@@ -291,16 +277,16 @@ export const EnrollmentForm = () => {
               placeholder="(00) 00000-0000"
               value={whatsapp}
               onChange={handleWhatsAppChange}
-              className="h-12 border-border bg-background/50 pl-20 focus:border-primary"
+              className="pl-20 h-12 bg-background/50 border-border focus:border-primary"
               required
             />
           </div>
         </div>
 
         <div>
-          <Label className="mb-3 flex items-center gap-2 font-medium text-foreground">
+          <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma na Edicao Sao Paulo
+            Escolha sua turma - 04 de Abril
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[])
@@ -308,14 +294,18 @@ export const EnrollmentForm = () => {
               .map((turmaKey) => {
                 const turma = TURMA_CONFIG[turmaKey!];
                 const isSelected = selectedTurma === turmaKey;
-                const icon = turma.horario.includes("09:00") ? "MANHA" : "TARDE";
+                const icon = turma.horario.includes("09:00")
+                  ? "☀️"
+                  : turma.horario.includes("14:00")
+                    ? "🌇"
+                    : "🌙";
 
                 return (
                   <button
                     key={turmaKey}
                     type="button"
                     onClick={() => setSelectedTurma(turmaKey)}
-                    className={`w-full rounded-xl border-2 p-4 text-left transition-all duration-300 ${
+                    className={`w-full p-4 rounded-xl border-2 transition-all duration-300 ${
                       isSelected
                         ? "border-primary bg-primary/10 shadow-lg"
                         : "border-border bg-background/50 hover:border-primary/50"
@@ -323,32 +313,29 @@ export const EnrollmentForm = () => {
                   >
                     <div className="flex items-start gap-3">
                       <div
-                        className={`mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 ${
+                        className={`w-5 h-5 mt-1 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
                           isSelected
                             ? "border-primary bg-primary"
                             : "border-muted-foreground"
                         }`}
                       >
                         {isSelected && (
-                          <div className="h-2 w-2 rounded-full bg-primary-foreground" />
+                          <div className="w-2 h-2 rounded-full bg-primary-foreground" />
                         )}
                       </div>
-
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-[11px] font-semibold tracking-[0.16em] text-primary">
-                            {icon}
-                          </span>
+                      <div className="text-left flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-lg">{icon}</span>
                           <p className="font-semibold text-foreground">{turma.data}</p>
-                          <span className="rounded-full bg-primary/20 px-2 py-0.5 text-xs text-primary">
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
                             {turma.diaSemana}
                           </span>
                         </div>
-                        <p className="mt-1 text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground mt-1">
                           {turma.horario}
                         </p>
                         <p
-                          className={`mt-1 flex items-center gap-1 text-xs ${
+                          className={`text-xs mt-1 flex items-center gap-1 ${
                             turma.enderecoDefinido
                               ? "text-muted-foreground"
                               : "text-amber-500"
@@ -368,27 +355,33 @@ export const EnrollmentForm = () => {
         <button
           type="submit"
           disabled={isLoading}
-          className="relative w-full overflow-hidden rounded-full bg-primary px-8 py-5 text-lg font-bold uppercase tracking-wide text-primary-foreground transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-70"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-5 px-8 rounded-full transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed text-lg uppercase tracking-wide shadow-lg relative overflow-hidden"
           style={{
             animation: isLoading ? "none" : "pulse-button 2s ease-in-out infinite",
             boxShadow:
-              "0 10px 34px hsla(var(--primary) / 0.34), inset 0 -3px 0 rgba(0, 0, 0, 0.15), 0 0 0 3px hsla(var(--primary) / 0.12)",
+              "0 8px 32px hsla(var(--primary) / 0.5), inset 0 -3px 0 rgba(0, 0, 0, 0.2), 0 0 0 3px hsla(var(--primary) / 0.2)",
           }}
         >
           {isLoading ? (
             <>
-              <Loader2 className="mr-2 inline h-5 w-5 animate-spin" />
+              <Loader2 className="mr-2 h-5 w-5 animate-spin inline" />
               Processando...
             </>
           ) : (
-            <>Garantir minha vaga por R$20</>
+            <>Ultimas Vagas: Garanta Sua Experiencia por R$20!</>
           )}
         </button>
 
         <div className="flex flex-col gap-2 text-center text-sm text-muted-foreground">
-          <p>Vagas limitadas para esta edicao</p>
-          <p>Seus dados sao tratados com seguranca</p>
-          <p>Pagamento seguro no checkout oficial</p>
+          <p className="flex items-center justify-center gap-1">
+            Ultimas vagas disponiveis!
+          </p>
+          <p className="flex items-center justify-center gap-1">
+            Seus dados estao 100% seguros
+          </p>
+          <p className="flex items-center justify-center gap-1">
+            Pagamento seguro via Mercado Pago
+          </p>
         </div>
       </div>
     </form>

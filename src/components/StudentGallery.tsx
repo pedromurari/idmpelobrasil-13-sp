@@ -12,27 +12,25 @@ import foto8 from "@/assets/gallery/foto8.jpeg";
 import foto9 from "@/assets/gallery/foto9.jpeg";
 import foto10 from "@/assets/gallery/foto10.jpeg";
 import fotoSp1 from "@/assets/gallery-sp/foto1.jpeg";
-
 import fotoSp3 from "@/assets/gallery-sp/foto3.jpeg";
 import fotoSp4 from "@/assets/gallery-sp/foto4.jpeg";
 import fotoSp5 from "@/assets/gallery-sp/foto5.jpeg";
 
 const photos = [
   { src: fotoSp1, alt: "Turma completa com Rodrygo Murari" },
-  
-  { src: fotoSp3, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: fotoSp4, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: fotoSp5, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: foto1, alt: "Alunas com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp3, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp4, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: fotoSp5, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: foto1, alt: "Participantes com certificado ao lado de Rodrygo Murari" },
   { src: foto2, alt: "Turma completa com certificados" },
-  { src: foto3, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: foto4, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: foto5, alt: "Alunos com certificados" },
+  { src: foto3, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: foto4, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: foto5, alt: "Participantes com certificados" },
   { src: foto6, alt: "Turma completa reunida" },
-  { src: foto7, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
-  { src: foto8, alt: "Aluna com certificado ao lado de Rodrygo Murari" },
+  { src: foto7, alt: "Participante com certificado ao lado de Rodrygo Murari" },
+  { src: foto8, alt: "Participante com certificado ao lado de Rodrygo Murari" },
   { src: foto9, alt: "Turma completa em sala de aula" },
-  { src: foto10, alt: "Alunos durante o curso presencial" },
+  { src: foto10, alt: "Participantes durante o encontro presencial" },
 ];
 
 export const StudentGallery = () => {
@@ -40,8 +38,10 @@ export const StudentGallery = () => {
 
   const openPhoto = (index: number) => setSelectedIndex(index);
   const closePhoto = () => setSelectedIndex(null);
-  const prevPhoto = () => setSelectedIndex((i) => (i !== null ? (i - 1 + photos.length) % photos.length : null));
-  const nextPhoto = () => setSelectedIndex((i) => (i !== null ? (i + 1) % photos.length : null));
+  const prevPhoto = () =>
+    setSelectedIndex((i) => (i !== null ? (i - 1 + photos.length) % photos.length : null));
+  const nextPhoto = () =>
+    setSelectedIndex((i) => (i !== null ? (i + 1) % photos.length : null));
 
   return (
     <section className="md:py-8 relative z-10 px-[15px] py-[5px]">
@@ -49,19 +49,19 @@ export const StudentGallery = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-4">
-              📸 Nossos <span className="text-primary">Alunos em Ação</span>
+              📸 Nossos <span className="text-primary">Participantes em Ação</span>
             </h2>
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-              Veja momentos reais das nossas turmas presenciais — alunos certificados e transformados!
+              Veja momentos reais das nossas turmas presenciais - participantes
+              certificados e transformados!
             </p>
 
-            {/* Video de depoimentos */}
             <div className="max-w-sm mx-auto mb-8">
               <div className="aspect-[9/16] w-full rounded-xl overflow-hidden border-2 border-primary/20 shadow-lg">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/b3Wkb1eNHzs"
-                  title="Depoimentos de alunos"
+                  title="Depoimentos de participantes"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
@@ -90,14 +90,16 @@ export const StudentGallery = () => {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selectedIndex !== null && (
         <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           onClick={closePhoto}
         >
           <button
-            onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prevPhoto();
+            }}
             className="absolute left-2 md:left-6 text-white/80 hover:text-white z-10"
           >
             <ChevronLeft className="h-10 w-10" />
@@ -109,7 +111,10 @@ export const StudentGallery = () => {
             onClick={(e) => e.stopPropagation()}
           />
           <button
-            onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              nextPhoto();
+            }}
             className="absolute right-2 md:right-6 text-white/80 hover:text-white z-10"
           >
             <ChevronRight className="h-10 w-10" />
