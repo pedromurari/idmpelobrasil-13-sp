@@ -58,7 +58,7 @@ const Index = () => {
             <div className="text-lg md:text-xl text-muted-foreground space-y-2 max-w-3xl mx-auto">
               <div className="bg-card/50 border-2 border-primary/40 rounded-xl p-4 mt-4 mb-4">
                 <p className="text-primary font-bold text-xl mb-2">
-                  2 TURMAS DISPONIVEIS - 16 de Maio em Pinheiros SP!
+                  2 TURMAS DISPONIVEIS - 30 de Maio em Pinheiros SP!
                 </p>
                 <p className="font-semibold text-foreground text-base">
                   Vagas limitadas! Escolha Manha ou Tarde e garanta sua vaga
@@ -406,7 +406,7 @@ const Index = () => {
               <FAQItem
                 value="faq-4"
                 question="Quando e onde sera a experiencia?"
-                answer="A experiencia sera realizada no dia 16/05 (Sabado), com duas turmas: Manha (09h as 12h) e Tarde (14h as 17h), presencial em Pinheiros, Sao Paulo - Rua Oscar Freire, 2617 cj 408. As informacoes detalhadas serao enviadas imediatamente apos sua inscricao, por WhatsApp e email."
+                answer="A experiencia sera realizada no dia 30/05 (Sabado), com duas turmas: Manha (09h as 12h) e Tarde (14h as 17h), presencial em Pinheiros, Sao Paulo - Rua Oscar Freire, 2617 cj 408. As informacoes detalhadas serao enviadas imediatamente apos sua inscricao, por WhatsApp e email."
               />
               <FAQItem
                 value="faq-5"

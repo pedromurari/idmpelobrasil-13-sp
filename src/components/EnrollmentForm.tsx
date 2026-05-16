@@ -5,12 +5,12 @@ import { useToast } from "@/hooks/use-toast";
 import { User, Phone, Loader2, Calendar, MapPin } from "lucide-react";
 import { MetaIdentity } from "../utils/meta-identity";
 
-type TurmaOption = "16mai_manha" | "16mai_tarde" | null;
+type TurmaOption = "30mai_manha" | "30mai_tarde" | null;
 
 const TURMA_CONFIG = {
-  "16mai_manha": {
-    label: "16/05 - Manha",
-    data: "16 de Maio",
+  "30mai_manha": {
+    label: "30/05 - Manha",
+    data: "30 de Maio",
     diaSemana: "Sabado",
     horario: "09:00 as 13:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
@@ -19,9 +19,9 @@ const TURMA_CONFIG = {
       "https://script.google.com/macros/s/AKfycbxhudvFlfP8_oR0263c-50Qo73T3JA9U07TkjL4mQxosp5Dga-9zpXSRqJY5kcTvIyG/exec",
     checkoutUrl: "https://checkout.institutodespertamente.shop/VCCL1O8SD141",
   },
-  "16mai_tarde": {
-    label: "16/05 - Tarde",
-    data: "16 de Maio",
+  "30mai_tarde": {
+    label: "30/05 - Tarde",
+    data: "30 de Maio",
     diaSemana: "Sabado",
     horario: "14:00 as 18:00",
     endereco: "Rua Oscar Freire, 2617 cj 408 - Pinheiros, Sao Paulo",
@@ -101,7 +101,7 @@ export const EnrollmentForm = () => {
       const sheetParams = new URLSearchParams({
         name: name.trim(),
         phone: phoneToSend,
-        turma: selectedTurma === "16mai_manha" ? "manha" : "tarde",
+        turma: selectedTurma === "30mai_manha" ? "manha" : "tarde",
         utm_source: urlParams.get("utm_source") || "",
         utm_medium: urlParams.get("utm_medium") || "",
         utm_campaign: urlParams.get("utm_campaign") || "",
@@ -303,7 +303,7 @@ export const EnrollmentForm = () => {
         <div>
           <Label className="text-foreground font-medium flex items-center gap-2 mb-3">
             <Calendar className="h-5 w-5" />
-            Escolha sua turma - 16 de Maio
+            Escolha sua turma - 30 de Maio
           </Label>
           <div className="space-y-3">
             {(Object.keys(TURMA_CONFIG) as TurmaOption[])
